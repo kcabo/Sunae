@@ -1,27 +1,29 @@
 {
-	"name": "Node.js & TypeScript",
+  "name": "Node.js & TypeScript",
 
-	"dockerComposeFile": "docker-compose.yml",
-  	"service": "app",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
 
-	  "workspaceFolder": "/opt/sunae",
+  "workspaceFolder": "/opt/sunae",
 
-	  "settings": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true,
-		"editor.codeActionsOnSave": {
-		  "source.fixAll.eslint": true
-		}
-	  },
-	
-	  "extensions": [
-		"formulahendry.auto-rename-tag",
-		"visualstudioexptteam.vscodeintellicode",
-		"esbenp.prettier-vscode",
-		"streetsidesoftware.code-spell-checker"
-	  ],
-	
-	  "forwardPorts": [3000],
-	
-	  "remoteUser": "node"
+  "settings": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "prettier.jsxSingleQuote": true,
+    "prettier.singleQuote": true
+  },
+
+  "extensions": [
+    "formulahendry.auto-rename-tag",
+    "visualstudioexptteam.vscodeintellicode",
+    "esbenp.prettier-vscode",
+    "streetsidesoftware.code-spell-checker"
+  ],
+
+  "forwardPorts": [3000],
+
+  "remoteUser": "node"
 }

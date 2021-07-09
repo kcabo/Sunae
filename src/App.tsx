@@ -2,6 +2,19 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+type MyProps = {
+  name: string;
+  txtStyle: string;
+};
+
+const MyFirstComponent: React.VFC<MyProps> = ({ name, txtStyle }) => {
+  return (
+    <p className={'text-red-100 p-10 ' + txtStyle}>
+      初めてのReact！こんちくわ{name}だよ
+    </p>
+  );
+};
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -9,8 +22,8 @@ function App() {
     <div className='App'>
       <header className='App-header'>
         <img src={logo} className='App-logo' alt='logo' />
-        <p>こんにちは Vite + React!</p>
-
+        <p className='text-red-800 text-4xl'>こんにちは Vite + React!</p>
+        <MyFirstComponent name='太郎' txtStyle='underline' />
         <p>
           <button type='button' onClick={() => setCount((count) => count + 1)}>
             count is: {count}

@@ -20,7 +20,8 @@
     "formulahendry.auto-rename-tag",
     "visualstudioexptteam.vscodeintellicode",
     "esbenp.prettier-vscode",
-    "streetsidesoftware.code-spell-checker"
+    "streetsidesoftware.code-spell-checker",
+    "bradlc.vscode-tailwindcss"
   ],
 
   "forwardPorts": [3000],

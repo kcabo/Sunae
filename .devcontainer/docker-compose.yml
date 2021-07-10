@@ -5,19 +5,15 @@ services:
     build:
       context: '..'
       dockerfile: .devcontainer/Dockerfile
-
     image: sunae
     container_name: app
-
     ports:
       - '3000:3000'
     volumes:
       - ..:/opt/sunae
       - node_modules:/opt/sunae/node_modules
     working_dir: /opt/sunae
-
     environment:
-      # CHOKIDAR_USEPOLLING: 'true'
       TZ: Asia/Tokyo
     tty: true
 

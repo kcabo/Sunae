@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Preview from './Preview';
 import Picker from './Picker';
 import Output from './Output';
@@ -23,9 +23,19 @@ const LeftBlock: React.VFC = () => {
   );
 };
 
+interface IStyle {
+  backgroundColor: string;
+  textColor: string;
+}
+
 const App: React.VFC = () => {
+  const [style, setStyle] = useState<IStyle>({
+    backgroundColor: '#282C34',
+    textColor: '#ffffff',
+  });
+
   return (
-    <section className='text-gray-600 body-font'>
+    <section className='text-gray-600'>
       <div className='container mx-auto flex px-5 py-24 md:flex-row flex-col items-center'>
         <LeftBlock></LeftBlock>
 

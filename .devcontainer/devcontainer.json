@@ -21,7 +21,8 @@
     "visualstudioexptteam.vscodeintellicode",
     "esbenp.prettier-vscode",
     "streetsidesoftware.code-spell-checker",
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+    "vtrois.gitmoji-vscode"
   ],
 
   "forwardPorts": [3000],

@@ -6,16 +6,6 @@
 
   "workspaceFolder": "/opt/sunae",
 
-  "settings": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "prettier.jsxSingleQuote": true,
-    "prettier.singleQuote": true
-  },
-
   "extensions": [
     "formulahendry.auto-rename-tag",
     "visualstudioexptteam.vscodeintellicode",

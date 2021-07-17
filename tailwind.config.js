@@ -14,6 +14,9 @@ module.exports = {
           'sans-serif',
         ],
       },
+      backgroundImage: (theme) => ({
+        img: "url('src/images/bg.webp')",
+      }),
     },
   },
 };

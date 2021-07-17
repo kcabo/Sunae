@@ -20,7 +20,7 @@ const Main: React.VFC = () => {
 
 const App: React.VFC = () => {
   return (
-    <div className='bg-gray-500 min-h-screen w-screen text-white'>
+    <div className='bg-img bg-cover min-h-screen w-screen text-white'>
       <Main />
       <Footer />
     </div>

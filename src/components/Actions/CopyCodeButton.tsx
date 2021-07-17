@@ -4,17 +4,22 @@ type Props = {
   URL: string;
 };
 
-const OpenMemoButton: React.VFC<Props> = ({ URL }) => {
+const copyToClipboard = (text: string) => {
+  navigator.clipboard
+    .writeText(text)
+    .then((e) => alert('Copied!! Then paste it in your address bar.'))
+    .catch((e) => alert('Sorry, something went wrong😥'));
+};
+
+const CopyCodeButton: React.VFC<Props> = ({ URL }) => {
   return (
     <button
-      onClick={() => {
-        window.open('data:,Hello%2C%20World!');
-      }}
+      onClick={() => copyToClipboard(URL)}
       className='w-28 py-2.5 text-center font-medium bg-blue-600 rounded-lg hover:bg-blue-700'
     >
-      Open Memo
+      Copy Code
     </button>
   );
 };
 
-export default OpenMemoButton;
+export default CopyCodeButton;

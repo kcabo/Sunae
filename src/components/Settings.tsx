@@ -1,8 +1,14 @@
 import React from 'react';
 import Picker from './Picker';
 import Actions from './Actions';
+import { Theme } from '../App';
 
-const Settings: React.VFC = () => {
+type Props = {
+  theme: Theme;
+  updateTheme: (obj: object) => void;
+};
+
+const Settings: React.VFC<Props> = ({ theme, updateTheme }) => {
   return (
     <div
       className='w-full mx-auto h-full p-10 bg-white rounded-xl 
@@ -10,10 +16,24 @@ const Settings: React.VFC = () => {
         flex flex-col justify-between'
     >
       <div className='flex flex-col gap-6'>
-        <Picker label='背景色' labelEn='Background Color' />
-        <Picker label='文字色' labelEn='Text Color' />
+        <Picker
+          label='背景色'
+          labelEn='Background Color'
+          defaultColor={theme.backgroundColor}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            updateTheme({ backgroundColor: e.target.value })
+          }
+        />
+        <Picker
+          label='文字色'
+          labelEn='Text Color'
+          defaultColor={theme.color}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            updateTheme({ color: e.target.value })
+          }
+        />
       </div>
-      <Actions />
+      <Actions theme={theme} />
     </div>
   );
 };

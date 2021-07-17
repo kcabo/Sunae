@@ -1,18 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import About from './components/About';
 import Preview from './components/Preview';
 import Settings from './components/Settings';
 import Footer from './components/Footer';
 
+export type Theme = {
+  backgroundColor: string;
+  color: string; // font color
+};
+
 const Main: React.VFC = () => {
+  const [theme, setTheme] = useState<Theme>({
+    backgroundColor: '#4b5563',
+    color: '#ffffff',
+  });
+
+  const updateTheme = (obj: object) => {
+    const newTheme = {
+      ...theme,
+      ...obj,
+    };
+    setTheme(newTheme);
+  };
+
   return (
     <div className='px-5 md:px-10 py-20 flex flex-col md:flex-row justify-center md:gap-10'>
       <div className='lg:max-w-lg w-full md:w-1/2 mb-16 md:mb-0 text-center'>
         <About />
-        <Preview />
+        <Preview theme={theme} />
       </div>
       <div className='lg:max-w-lg w-full md:w-1/3'>
-        <Settings />
+        <Settings theme={theme} updateTheme={updateTheme} />
       </div>
     </div>
   );

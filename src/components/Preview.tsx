@@ -1,9 +1,17 @@
 import React from 'react';
+import { Theme } from '../App';
 
-const Preview: React.VFC = () => {
+type Props = {
+  theme: Theme;
+};
+
+const Preview: React.VFC<Props> = ({ theme }) => {
   return (
     <div className='md:w-full w-full mx-auto'>
-      <div className='rounded-lg bg-gray-600 text-white p-7 leading-loose text-left text-lg'>
+      <div
+        style={theme}
+        className='rounded-lg p-7 leading-loose text-left text-lg'
+      >
         # 本日の予定 <br />
         - 予習 <br />
         - 復習 <br />
@@ -13,7 +21,7 @@ const Preview: React.VFC = () => {
           吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。
         </u>
         <br />
-        also supported Emoji 🎉
+        also supports Emoji 🎉
       </div>
     </div>
   );

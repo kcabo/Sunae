@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 const Main: React.VFC = () => {
   return (
     <div className='px-5 md:px-10 py-20 flex flex-col md:flex-row justify-center md:gap-10'>
-      <div className='lg:max-w-lg w-full md:w-1/2 md:text-left mb-16 md:mb-0 text-center'>
+      <div className='lg:max-w-lg w-full md:w-1/2 mb-16 md:mb-0 text-center'>
         <About />
         <Preview />
       </div>

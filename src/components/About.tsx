@@ -2,12 +2,12 @@ import React from 'react';
 
 const About: React.VFC = () => {
   return (
-    <>
-      <h1 className='sm:text-4xl text-3xl mb-4 font-medium'>砂絵</h1>
-      <p className='mb-6 leading-relaxed text-lg'>
+    <div className='md:text-left'>
+      <h1 className='text-4xl md:text-6xl mb-4 font-bold'>砂絵</h1>
+      <p className='mb-6 leading-relaxed text-lg drop-shadow-lg'>
         Pick your favorite color to customize the editor.
       </p>
-    </>
+    </div>
   );
 };
 

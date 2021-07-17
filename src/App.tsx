@@ -11,7 +11,7 @@ const Main: React.VFC = () => {
         <About />
         <Preview />
       </div>
-      <div className='lg:max-w-lg w-full'>
+      <div className='lg:max-w-lg w-full md:w-1/3'>
         <Settings />
       </div>
     </div>

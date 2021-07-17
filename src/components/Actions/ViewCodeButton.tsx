@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface IViewCodeButton {
+type Props = {
   openModal: () => void;
-}
+};
 
-const ViewCodeButton: React.VFC<IViewCodeButton> = ({ openModal }) => {
+const ViewCodeButton: React.VFC<Props> = ({ openModal }) => {
   return (
     <button
       onClick={openModal}

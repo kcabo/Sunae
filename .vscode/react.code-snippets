@@ -15,19 +15,33 @@
   // 	],
   // 	"description": "Log output to console"
   // }
-  "React FC": {
+  "React FC Export": {
     "scope": "typescriptreact",
-    "prefix": "fc",
+    "prefix": "fcx",
     "body": [
       "import React from 'react';\n",
-      "const $1: React.VFC = () => {",
+      "const $TM_FILENAME_BASE$0: React.VFC = () => {",
       "  return (",
       "    <div className=''>",
       "      <div></div>",
       "    </div>",
       "  );",
       "};\n",
-      "export default $1;"
+      "export default $TM_FILENAME_BASE;"
+    ],
+    "description": "React関数コンポーネントの雛形"
+  },
+  "React FC": {
+    "scope": "typescriptreact",
+    "prefix": "fc",
+    "body": [
+      "const $TM_FILENAME_BASE$0: React.VFC = () => {",
+      "  return (",
+      "    <div className=''>",
+      "      <div></div>",
+      "    </div>",
+      "  );",
+      "};\n"
     ],
     "description": "React関数コンポーネントの雛形"
   }

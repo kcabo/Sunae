@@ -11,7 +11,7 @@ export type Theme = {
 
 const Main: React.VFC = () => {
   const [theme, setTheme] = useState<Theme>({
-    backgroundColor: '#4b5563',
+    backgroundColor: '#282C34',
     color: '#ffffff',
   });
 

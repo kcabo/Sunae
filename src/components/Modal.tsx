@@ -6,7 +6,7 @@ interface ModalProps {
   closeModal: () => void;
 }
 
-export default function CodeDialog(props: ModalProps) {
+export default function Modal(props: ModalProps) {
   const { isOpen, closeModal } = props;
   return (
     <Transition appear show={isOpen} as={Fragment}>

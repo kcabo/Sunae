@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 
-const Picker: React.VFC = () => {
-  const [color, setColor] = useState('#feaafe');
+type PickerProps = {
+  label: string;
+  labelEn: string;
+};
+
+const Picker: React.VFC<PickerProps> = ({ label, labelEn }) => {
+  const [color, setColor] = useState('#4b5563');
 
   const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target;
@@ -10,23 +15,29 @@ const Picker: React.VFC = () => {
   };
 
   return (
-    <div className='my-4 flex w-full justify-between'>
-      <p className='my-auto'>背景色</p>
-      <input
-        className='w-20 h-12 border-red-500 outline-none rounded-lg'
-        list='candidates'
-        type='color'
-        value={color}
-        onChange={handleColorChange}
-      ></input>
-      <datalist id='candidates'>
-        <option value='#ddd2aa'></option>
-        <option value='#ffe3d5'></option>
-        <option value='#d4ecad'></option>
-        <option value='#ddeaf6'></option>
-        <option value='#5888bd'></option>
-        <option value='#cdbbd3'></option>
-      </datalist>
+    <div className='flex w-full justify-between h-10'>
+      <div className='my-auto'>
+        <span className='leading-4 mr-4 text-lg'>{label}</span>
+        <span className='hidden lg:inline text-gray-400'>{labelEn}</span>
+      </div>
+
+      <div>
+        <input
+          className='w-20 h-full rounded-none text-gray-600 outline-none bg-transparent'
+          list='candidates'
+          type='color'
+          value={color}
+          onChange={handleColorChange}
+        ></input>
+        <datalist id='candidates'>
+          <option value='#ddd2aa'></option>
+          <option value='#ffe3d5'></option>
+          <option value='#d4ecad'></option>
+          <option value='#ddeaf6'></option>
+          <option value='#5888bd'></option>
+          <option value='#cdbbd3'></option>
+        </datalist>
+      </div>
     </div>
   );
 };

@@ -9,9 +9,9 @@ const Settings: React.VFC = () => {
         backdrop-blur-xl bg-opacity-25 border border-white border-opacity-80 drop-shadow-2xl
         flex flex-col justify-between'
     >
-      <div>
-        <Picker />
-        <Picker />
+      <div className='flex flex-col gap-6'>
+        <Picker label='背景色' labelEn='Background Color' />
+        <Picker label='文字色' labelEn='Text Color' />
       </div>
       <Actions />
     </div>

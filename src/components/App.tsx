@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import About from './About';
 import Preview from './Preview';
 import Settings from './Settings';
-import Footer from './Footer';
 
 export type Theme = {
   backgroundColor: string;
@@ -11,7 +10,7 @@ export type Theme = {
   lineHeight: number; // 単位なし フォントサイズに応じた高さ
 };
 
-const Main: React.VFC = () => {
+const App: React.VFC = () => {
   const [theme, setTheme] = useState<Theme>({
     backgroundColor: '#282C34',
     color: '#ffffff',
@@ -34,15 +33,6 @@ const Main: React.VFC = () => {
       <div className='lg:max-w-lg w-full md:w-1/3'>
         <Settings theme={theme} updateTheme={updateTheme} />
       </div>
-    </div>
-  );
-};
-
-const App: React.VFC = () => {
-  return (
-    <div className='bg-img bg-cover bg-center lg:bg-left min-h-screen w-screen text-white'>
-      <Main />
-      <Footer />
     </div>
   );
 };

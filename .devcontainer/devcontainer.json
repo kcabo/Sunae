@@ -12,7 +12,8 @@
     "esbenp.prettier-vscode",
     "streetsidesoftware.code-spell-checker",
     "bradlc.vscode-tailwindcss",
-    "vtrois.gitmoji-vscode"
+    "vtrois.gitmoji-vscode",
+    "donjayamanne.githistory"
   ],
 
   "forwardPorts": [3000],

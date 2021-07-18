@@ -11,8 +11,8 @@ type Props = {
 const constructURL = (theme: Theme) => {
   const backgroundColor = theme.backgroundColor.replace('#', '');
   const textColor = theme.color.replace('#', '');
-  const style = `<style> body {background-color:%23${backgroundColor};color:${textColor};line-height:2;padding:20px;font-family:sans-serif;} </style>`;
-  return `data:text/html, <head><meta charset="UTF-8"><title>メモ</title>${style}<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB1UlEQVQ4T5XTS0gbQRgH8P83s6ti26Ai9SRUE4rP4EmlJyHxYhUptmlBvSp4EQ8efB0UFCkUacFDpMfiY8GL+CiaPg5tMRVKiHhQox68BJFUNAEfuxnZojGbjZrOZdjh+/9mhm+WkMLYL62xnTNpCoR8ATFi83/5cB2jFPII2B0KgV7FagV6rOueUf37XmA1p8piyctYS5flp4bNrpA7gZXH5YWc8zmZS6V5WRZwxhIM0WkAtkpqKpgkDQLiLHQSngufno8ByNVTMucwIyJoAAJ25w4BhXpAi0YRPDqGqmmxXc0I/Y4BAqA9uzMsgMzrRDJE4hy5jx5upsmSD5rabzjBdpmjlzEajr+oGREbmWfpz6pD3uOkXdgtdwwJooFbkENNU6tqD9Z3b30H49PzxUXff/558mstIxE5ikRaK/e8n+LXDVf4qHzO0aB6AbLZvv44TUQAzFr9npdJAUVReAgPlgioBbAFNdroGHnfQgx9cYF5q9/TkBRwKwtvAXQDWNYuxJuO5vq/emHA7uwjoFcAQc6oqcC34jMBEzMLTYKgAHiXjUiPy+W6aT4AvcX0bzIPck8vWsHENxLoanv9fDaVn8twAvfM4gDSMNn+om7nf8N6/SVJwrSForoMogAAAABJRU5ErkJggg=="></head><body contenteditable></body>`;
+  const style = `<style>body{background-color:%23${backgroundColor};color:${textColor};line-height:2;padding:20px;font-family:sans-serif;}</style>`;
+  return `data:text/html,<head><meta charset="UTF-8"><title>メモ</title>${style}<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNiAzNiI+PHBhdGggZmlsbD0iI0JFMTkzMSIgZD0iTTIzLjcgMjMuM2wtMTEtMTEgOS40LTcuOCA5LjQgOS40eiIvPjxwYXRoIGZpbGw9IiNERDJFNDQiIGQ9Ik0zNC42IDE0YTQuNCA0LjQgMCAwMS02LjMgMGwtNi4yLTYuM2E0LjQgNC40IDAgMTE2LjItNi4zbDYuMyA2LjNhNC40IDQuNCAwIDAxMCA2LjJ6Ii8+PHBhdGggZmlsbD0iIzk5QUFCNSIgZD0iTTE0IDE3LjhTLS42IDM1IC4yIDM1LjhjLjguOCAxOC0xMy44IDE4LTEzLjhMMTQgMTcuOHoiLz48cGF0aCBmaWxsPSIjREQyRTQ0IiBkPSJNMjUuMiAyOGE0LjQgNC40IDAgMDEtNi4yIDBMOCAxN2E0LjQgNC40IDAgMDE2LjMtNi4ybDExIDExYTQuNCA0LjQgMCAwMTAgNi4yeiIvPjwvc3ZnPg=="></head><body contenteditable></body>`;
 };
 
 const Actions: React.VFC<Props> = ({ theme }) => {

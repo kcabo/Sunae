@@ -18,6 +18,22 @@ const App: React.VFC = () => {
     lineHeight: 2,
   });
 
+  const handleThemeOnChange = (
+    key: 'backgroundColor' | 'color' | 'padding' | 'lineHeight',
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    switch (key) {
+      case 'backgroundColor':
+        setTheme({ ...theme, backgroundColor: e.target.value });
+      case 'color':
+        setTheme({ ...theme, color: e.target.value });
+      case 'padding':
+        setTheme({ ...theme, padding: Number(e.target.value) });
+      case 'lineHeight':
+        setTheme({ ...theme, lineHeight: Number(e.target.value) });
+    }
+  };
+
   const updateTheme = (obj: object) => {
     // 既存のオブジェクトを消さないように統合する
     const newTheme = { ...theme, ...obj };

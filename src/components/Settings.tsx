@@ -7,9 +7,13 @@ import { Theme } from './App';
 type Props = {
   theme: Theme;
   updateTheme: (obj: object) => void;
+  onChange?: (
+    key: 'backgroundColor' | 'color' | 'padding' | 'lineHeight',
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => void;
 };
 
-const Settings: React.VFC<Props> = ({ theme, updateTheme }) => {
+const Settings: React.VFC<Props> = ({ theme, updateTheme, onChange }) => {
   return (
     <div
       className='w-full mx-auto h-full p-10 bg-white rounded-xl 

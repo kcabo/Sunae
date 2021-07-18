@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CopyCodeButton from './CopyCodeButton';
 import ViewCodeButton from './ViewCodeButton';
 import Modal from './Modal';
-import { Theme } from '../../App';
+import { Theme } from '../App';
 
 type Props = {
   theme: Theme;

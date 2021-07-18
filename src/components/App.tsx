@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import About from './components/About';
-import Preview from './components/Preview';
-import Settings from './components/Settings';
-import Footer from './components/Footer';
+import About from './About';
+import Preview from './Preview';
+import Settings from './Settings';
+import Footer from './Footer';
 
 export type Theme = {
   backgroundColor: string;

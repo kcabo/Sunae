@@ -2,7 +2,7 @@ import React from 'react';
 import Picker from './Picker';
 import Range from './Range';
 import Actions from './Actions';
-import { Theme } from '../App';
+import { Theme } from './App';
 
 type Props = {
   theme: Theme;

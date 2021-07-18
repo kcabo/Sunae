@@ -29,11 +29,16 @@ const Picker: React.VFC<PickerProps> = ({
           onChange={onChange}
         ></input>
         <datalist id='candidates'>
-          <option value='#ddd2aa'></option>
-          <option value='#ffe3d5'></option>
-          <option value='#d4ecad'></option>
-          <option value='#5888bd'></option>
-          <option value='#cdbbd3'></option>
+          <option value='#282C34'></option>
+          <option value='#0C0C0C'></option>
+          <option value='#002B36'></option>
+          <option value='#FFFFFF'></option>
+          <option value='#56B6C2'></option>
+          <option value='#E06C75'></option>
+          <option value='#98C379'></option>
+          <option value='#E5C07B'></option>
+          <option value='#61AFEF'></option>
+          <option value='#C678DD'></option>
         </datalist>
       </div>
     </div>

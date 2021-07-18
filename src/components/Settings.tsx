@@ -20,7 +20,7 @@ const Settings: React.VFC<Props> = ({ theme, updateTheme }) => {
         <Picker
           label='背景色'
           labelEn='Background Color'
-          defaultColor={theme.backgroundColor}
+          color={theme.backgroundColor}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             updateTheme({ backgroundColor: e.target.value })
           }
@@ -28,14 +28,14 @@ const Settings: React.VFC<Props> = ({ theme, updateTheme }) => {
         <Picker
           label='文字色'
           labelEn='Text Color'
-          defaultColor={theme.color}
+          color={theme.color}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             updateTheme({ color: e.target.value })
           }
         />
         <Range
           label='余白'
-          labelEn='Padding'
+          labelEn='Padding Size'
           size={theme.padding}
           minSize={0}
           maxSize={100}

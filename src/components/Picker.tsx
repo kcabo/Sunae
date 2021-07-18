@@ -3,14 +3,14 @@ import React from 'react';
 type PickerProps = {
   label: string;
   labelEn: string;
-  defaultColor: string;
+  color: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const Picker: React.VFC<PickerProps> = ({
   label,
   labelEn,
-  defaultColor,
+  color,
   onChange,
 }) => {
   return (
@@ -25,7 +25,7 @@ const Picker: React.VFC<PickerProps> = ({
           className='w-20 h-full rounded-none text-gray-600 outline-none bg-transparent'
           list='candidates'
           type='color'
-          value={defaultColor}
+          value={color}
           onChange={onChange}
         ></input>
         <datalist id='candidates'>

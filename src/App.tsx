@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 export type Theme = {
   backgroundColor: string;
   color: string; // font color
-  padding: number;
+  padding: number; // インラインスタイルでは自動的にpxが補完されるのでnumber型でよい
   lineHeight: number; // 単位なし フォントサイズに応じた高さ
 };
 
@@ -20,10 +20,8 @@ const Main: React.VFC = () => {
   });
 
   const updateTheme = (obj: object) => {
-    const newTheme = {
-      ...theme,
-      ...obj,
-    };
+    // 既存のオブジェクトを消さないように統合する
+    const newTheme = { ...theme, ...obj };
     setTheme(newTheme);
   };
 

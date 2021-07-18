@@ -7,12 +7,16 @@ import Footer from './components/Footer';
 export type Theme = {
   backgroundColor: string;
   color: string; // font color
+  padding: number;
+  lineHeight: number; // 単位なし フォントサイズに応じた高さ
 };
 
 const Main: React.VFC = () => {
   const [theme, setTheme] = useState<Theme>({
     backgroundColor: '#282C34',
     color: '#ffffff',
+    padding: 20,
+    lineHeight: 2,
   });
 
   const updateTheme = (obj: object) => {

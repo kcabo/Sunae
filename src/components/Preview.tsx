@@ -8,10 +8,7 @@ type Props = {
 const Preview: React.VFC<Props> = ({ theme }) => {
   return (
     <div className='md:w-full w-full mx-auto'>
-      <div
-        style={theme}
-        className='rounded-lg p-7 leading-loose text-left text-lg'
-      >
+      <div style={theme} className='rounded-lg text-left text-lg'>
         # 本日の予定 <br />
         - 予習 <br />
         - 復習 <br />

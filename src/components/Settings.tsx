@@ -1,5 +1,6 @@
 import React from 'react';
 import Picker from './Picker';
+import Range from './Range';
 import Actions from './Actions';
 import { Theme } from '../App';
 
@@ -30,6 +31,28 @@ const Settings: React.VFC<Props> = ({ theme, updateTheme }) => {
           defaultColor={theme.color}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             updateTheme({ color: e.target.value })
+          }
+        />
+        <Range
+          label='余白'
+          labelEn='Padding'
+          size={theme.padding}
+          minSize={0}
+          maxSize={100}
+          step={1}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            updateTheme({ padding: Number(e.target.value) })
+          }
+        />
+        <Range
+          label='行間'
+          labelEn='Line Height'
+          size={theme.lineHeight}
+          minSize={1}
+          maxSize={4}
+          step={0.5}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            updateTheme({ lineHeight: Number(e.target.value) })
           }
         />
       </div>

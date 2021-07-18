@@ -6,14 +6,13 @@ import { Theme } from './App';
 
 type Props = {
   theme: Theme;
-  updateTheme: (obj: object) => void;
-  onChange?: (
-    key: 'backgroundColor' | 'color' | 'padding' | 'lineHeight',
-    e: React.ChangeEvent<HTMLInputElement>
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement>,
+    key: 'backgroundColor' | 'color' | 'padding' | 'lineHeight'
   ) => void;
 };
 
-const Settings: React.VFC<Props> = ({ theme, updateTheme, onChange }) => {
+const Settings: React.VFC<Props> = ({ theme, onChange }) => {
   return (
     <div
       className='w-full mx-auto h-full p-10 bg-white rounded-xl 
@@ -25,17 +24,13 @@ const Settings: React.VFC<Props> = ({ theme, updateTheme, onChange }) => {
           label='背景色'
           labelEn='Background Color'
           color={theme.backgroundColor}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            updateTheme({ backgroundColor: e.target.value })
-          }
+          onChange={(e) => onChange(e, 'backgroundColor')}
         />
         <Picker
           label='文字色'
           labelEn='Text Color'
           color={theme.color}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            updateTheme({ color: e.target.value })
-          }
+          onChange={(e) => onChange(e, 'color')}
         />
         <Range
           label='余白'
@@ -44,9 +39,7 @@ const Settings: React.VFC<Props> = ({ theme, updateTheme, onChange }) => {
           minSize={0}
           maxSize={100}
           step={1}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            updateTheme({ padding: Number(e.target.value) })
-          }
+          onChange={(e) => onChange(e, 'padding')}
         />
         <Range
           label='行間'
@@ -55,9 +48,7 @@ const Settings: React.VFC<Props> = ({ theme, updateTheme, onChange }) => {
           minSize={1}
           maxSize={4}
           step={0.5}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            updateTheme({ lineHeight: Number(e.target.value) })
-          }
+          onChange={(e) => onChange(e, 'lineHeight')}
         />
       </div>
       <Actions theme={theme} />

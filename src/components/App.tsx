@@ -19,25 +19,25 @@ const App: React.VFC = () => {
   });
 
   const handleThemeOnChange = (
-    key: 'backgroundColor' | 'color' | 'padding' | 'lineHeight',
-    e: React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLInputElement>,
+    key: 'backgroundColor' | 'color' | 'padding' | 'lineHeight'
   ) => {
     switch (key) {
       case 'backgroundColor':
         setTheme({ ...theme, backgroundColor: e.target.value });
+        break;
       case 'color':
         setTheme({ ...theme, color: e.target.value });
+        break;
       case 'padding':
         setTheme({ ...theme, padding: Number(e.target.value) });
+        break;
       case 'lineHeight':
         setTheme({ ...theme, lineHeight: Number(e.target.value) });
+        break;
+      default:
+        const _exhaustiveCheck: never = key;
     }
-  };
-
-  const updateTheme = (obj: object) => {
-    // 既存のオブジェクトを消さないように統合する
-    const newTheme = { ...theme, ...obj };
-    setTheme(newTheme);
   };
 
   return (
@@ -47,7 +47,7 @@ const App: React.VFC = () => {
         <Preview theme={theme} />
       </div>
       <div className='lg:max-w-lg w-full md:w-1/3'>
-        <Settings theme={theme} updateTheme={updateTheme} />
+        <Settings theme={theme} onChange={handleThemeOnChange} />
       </div>
     </div>
   );

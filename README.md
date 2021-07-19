@@ -10,7 +10,7 @@
 A handy and simple WYSIWYG text editor for your browser.  
 Sunae behaves as a editable HTML page.
 
-_Your data will easily blown off like sand painting (砂絵 [sunae] in Japanese). Nothing will save._
+_Your data will easily blown off like sand painting (砂絵 [sunae] in Japanese). Nothing will save on your machine._
 
 ## Features
 
@@ -24,9 +24,9 @@ _Your data will easily blown off like sand painting (砂絵 [sunae] in Japanese)
 
 Setup page is available [here](https://kcabo.github.io/Sunae/).  
 Build up your editor, copy the code, and paste it into the browser's address bar / Omnibar.  
-You can bookmark that page to make it more reachable ;)
+You can bookmark that page to make it more reachable😉
 
-**Caution**: If you want, please save your content manually. Once you reload or jump to another page, you can no longer retrieve content.
+**Caution**: If you want, please save your content manually (by `ctrl+S` on Windows). Once you reload or jump to another page, you can no longer retrieve data.
 
 ## License
 

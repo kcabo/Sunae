@@ -1,5 +1,10 @@
 # Sunae (砂絵)
 
+![GitHub last commit](https://img.shields.io/github/last-commit/kcabo/Sunae?logo=Github)
+![GitHub](https://img.shields.io/github/license/kcabo/Sunae?logo=Github)
+![GitHub repo size](https://img.shields.io/github/repo-size/kcabo/Sunae?logo=Github)
+![Lines of code](https://tokei.rs/b1/github/kcabo/Sunae?category=code)
+
 [Official Website](https://kcabo.github.io/Sunae/)
 
 A handy and simple WYSIWYG text editor for your browser.  

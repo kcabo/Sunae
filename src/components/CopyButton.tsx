@@ -28,7 +28,7 @@ export function CopyButton(props: Props) {
     <button
       type="button"
       onClick={copy}
-      class="border rounded-md text-[13px] font-medium cursor-pointer px-3.5 py-[9px] transition-all"
+      class="border rounded-md text-sm font-medium cursor-pointer px-3.5 py-2.5 transition-all"
       style={{
         border: '1px solid #e4e4e7',
         background: done() ? '#111' : '#fff',

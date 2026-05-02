@@ -8,13 +8,13 @@ interface Props {
 
 export function LangToggle(props: Props) {
   return (
-    <div class="inline-flex border border-[#e4e4e7] rounded-md overflow-hidden">
+    <div class="inline-flex border border-zinc-200 rounded-md overflow-hidden">
       <For each={['ja', 'en'] as Lang[]}>
         {l => (
           <button
             type="button"
             onClick={() => props.onChange(l)}
-            class="border-none px-3 py-1.5 text-xs font-medium cursor-pointer uppercase tracking-[0.06em] transition-colors"
+            class="border-none px-3 py-1.5 text-xs font-medium cursor-pointer uppercase tracking-wider transition-colors"
             style={{
               background: props.value === l ? '#e4e4e7' : 'transparent',
               color: props.value === l ? '#27272a' : '#a1a1aa',

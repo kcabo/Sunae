@@ -14,8 +14,8 @@ export function SliderField(props: Props) {
   return (
     <div>
       <div class="flex justify-between items-baseline mb-1.5">
-        <span class="text-[13px] text-[#52525b] font-medium">{props.label}</span>
-        <span class="text-[13px] font-mono text-[#52525b]">{props.value}{suffix()}</span>
+        <span class="text-sm text-zinc-600 font-medium">{props.label}</span>
+        <span class="text-sm font-mono text-zinc-600">{props.value}{suffix()}</span>
       </div>
       <input
         type="range"

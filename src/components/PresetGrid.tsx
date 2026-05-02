@@ -25,7 +25,7 @@ export function PresetGrid(props: Props) {
               onMouseLeave={e => (e.currentTarget.style.transform = '')}
             >
               <div
-                class="h-[42px] flex items-center justify-center relative border-b border-black/[0.04]"
+                class="h-11 flex items-center justify-center relative border-b border-black/[0.04]"
                 style={{ background: p.bg1 }}
               >
                 <div class="absolute inset-0" style={{ background: p.bg2 }} />
@@ -36,7 +36,7 @@ export function PresetGrid(props: Props) {
                   Aa
                 </div>
               </div>
-              <div class="px-2 py-1.5 text-[12px] text-[#52525b] font-medium truncate">
+              <div class="px-2 py-1.5 text-xs text-zinc-600 font-medium truncate">
                 {p.name}
               </div>
             </button>

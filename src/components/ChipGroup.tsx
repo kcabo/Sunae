@@ -1,6 +1,6 @@
 import { For } from 'solid-js'
 
-const LABEL_CLS = 'text-[13px] text-[#52525b] mb-2 font-medium'
+const LABEL_CLS = 'text-sm text-zinc-600 mb-2 font-medium'
 
 interface Option {
   value: number
@@ -28,7 +28,7 @@ export function ChipGroup(props: Props) {
               <button
                 type="button"
                 onClick={() => props.onChange(v)}
-                class="border rounded-md text-[13px] py-[9px] px-1 cursor-pointer font-medium transition-all"
+                class="border rounded-md text-sm py-2.5 px-1 cursor-pointer font-medium transition-all"
                 style={{
                   border: active() ? '1px solid #111' : '1px solid #e4e4e7',
                   background: active() ? '#111' : '#fff',

@@ -18,7 +18,7 @@ export const DEFAULT_STATE: BookmarkletState = {
   bg2: '#f5f5f5',
   text: '#2c3e50',
   fontFamily: 'sans-serif',
-  lineHeight: 1.5,
+  lineHeight: 1.625,
   padding: 32,
   margin: 48,
   maxWidth: 800,

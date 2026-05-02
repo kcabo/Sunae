@@ -8,7 +8,7 @@ interface Props {
 }
 
 export function LivePreview(props: Props) {
-  const virtualWidth = () => props.virtualWidth ?? 1100
+  const virtualWidth = () => props.virtualWidth ?? 1000
   let wrapRef: HTMLDivElement | undefined
   let iframeRef: HTMLIFrameElement | undefined
   const [scale, setScale] = createSignal(1)

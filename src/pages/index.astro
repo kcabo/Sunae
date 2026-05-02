@@ -1,20 +1,26 @@
 ---
-import '../styles/global.css'
-import App from '../components/App'
+import "../styles/global.css";
+import App from "../components/App";
 ---
 
 <!doctype html>
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} sizes="48x48" />
-    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
+    <link rel="icon" href="/Sunae/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/Sunae/favicon.svg" type="image/svg+xml" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&text=Sunae&display=swap" rel="stylesheet" />
-    <title>Sunae ― ブラウザを世界一シンプルなメモにする</title>
-    <meta name="description" content="ブラウザブックマークからメモを一瞬で起動できるように。保存も共有もできない、世界一気軽に使えるシンプルさ。" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&text=Sunae&display=swap"
+      rel="stylesheet"
+    />
+    <title>Sunae ― 世界一シンプルなメモ帳を作れるサービス</title>
+    <meta
+      name="description"
+      content="あなただけのメモ帳を作れます。ブラウザのブックマークに登録してクリック一つで即座に起動。気軽にメモして、閉じたら消える。"
+    />
   </head>
   <body class="bg-[#fafaf9] min-h-screen">
     <App client:load />

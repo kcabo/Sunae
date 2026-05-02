@@ -75,7 +75,7 @@ export const TITLE_TEMPLATES = [
 export const I18N = {
   ja: {
     title: 'Sunae',
-    subtitle: 'ブラウザブックマークからメモを一瞬で起動できるように。\n保存も共有もできない、世界一気軽に使えるシンプルさ。',
+    subtitle: 'あなただけのメモ帳を作れます。\n作ったメモ帳はブラウザのブックマークに登録でき、クリック一つで即座に開けます。余計な機能は一切ありません。気軽にメモして、閉じたら消える。ただそれだけの、世界で一番シンプルなメモ帳です。',
     preview: 'プレビュー',
     presets: 'カラープリセット',
     bg1: '背景色（メモ帳）',
@@ -87,7 +87,7 @@ export const I18N = {
     maxWidth: '最大幅',
     borderRadius: '角丸',
     title_field: 'タイトル',
-    install: 'インストール',
+    install: 'ブラウザへの登録方法',
     installHint: '右のボタンをブックマークバーへドラッグ&ドロップ',
     copyUrl: 'URLをコピー',
     copied: 'コピーしました!',
@@ -98,7 +98,7 @@ export const I18N = {
   },
   en: {
     title: 'Sunae',
-    subtitle: 'Launch a notepad instantly from your browser bookmark.\nNo saving, no sharing — just the simplest way to jot something down.',
+    subtitle: 'Create your own notepad. Register it as a browser bookmark and open it instantly with one click. No extra features. Just write, close, and it\'s gone. The simplest notepad in the world.',
     preview: 'Preview',
     presets: 'Color presets',
     bg1: 'Background (page)',
@@ -110,7 +110,7 @@ export const I18N = {
     maxWidth: 'Max width',
     borderRadius: 'Corner radius',
     title_field: 'Title',
-    install: 'Install',
+    install: 'How to add to your browser',
     installHint: 'Drag the button on the right to your bookmark bar',
     copyUrl: 'Copy URL',
     copied: 'Copied!',

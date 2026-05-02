@@ -75,7 +75,7 @@ export const TITLE_TEMPLATES = [
 export const I18N = {
   ja: {
     title: 'Sunae',
-    subtitle: 'あなただけのメモ帳を作れます。\n作ったメモ帳はブラウザのブックマークに登録でき、クリック一つで即座に開けます。余計な機能は一切ありません。気軽にメモして、閉じたら消える。ただそれだけの、世界で一番シンプルなメモ帳です。',
+    subtitle: 'あなただけのメモ帳を作れます。\n作ったメモ帳はブラウザのブックマークに登録でき、クリック一つで即座に開けます。\n余計な機能は一切ありません。気軽にメモして、閉じたら消える。ただそれだけの、世界で一番シンプルなメモ帳です。',
     preview: 'プレビュー',
     presets: 'カラープリセット',
     bg1: '背景色（メモ帳）',
@@ -98,7 +98,7 @@ export const I18N = {
   },
   en: {
     title: 'Sunae',
-    subtitle: 'Create your own notepad. Register it as a browser bookmark and open it instantly with one click. No extra features. Just write, close, and it\'s gone. The simplest notepad in the world.',
+    subtitle: 'Create your own notepad.\nRegister it as a browser bookmark and open it instantly with one click.\nNo extra features. Just write, close, and it\'s gone. The simplest notepad in the world.',
     preview: 'Preview',
     presets: 'Color presets',
     bg1: 'Background (page)',

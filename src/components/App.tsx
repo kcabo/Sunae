@@ -34,30 +34,30 @@ export default function App() {
   const t = createMemo(() => I18N[lang()])
 
   return (
-    <div class="w-full max-w-[1280px] min-h-screen mx-auto bg-[#fafaf9] text-[#27272a] px-12 py-10 box-border flex flex-col gap-7"
+    <div class="relative w-full max-w-[1280px] min-h-screen mx-auto bg-[#fafaf9] text-[#27272a] px-5 py-8 lg:px-12 lg:py-10 box-border flex flex-col gap-7"
       style={{ "font-family": '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif' }}>
 
+      {/* Lang toggle: top-right of container */}
+      <div class="absolute top-8 right-5 lg:top-10 lg:right-12">
+        <LangToggle value={lang()} onChange={setLang} />
+      </div>
+
       {/* Header */}
-      <div class="flex justify-between items-end">
-        <div>
-          <h1 class="text-[84px] font-thin m-0 leading-none tracking-tighter text-[#111]"
-            style={{ "font-family": '"Montserrat", sans-serif', "font-style": 'italic' }}>
-            {t().title}
-          </h1>
-          <p class="text-base text-[#52525b] mt-3.5 max-w-[560px] leading-relaxed whitespace-pre-line">
-            {t().subtitle}
-          </p>
-        </div>
-        <div class="flex gap-2 items-center pb-1.5">
-          <LangToggle value={lang()} onChange={setLang} />
-        </div>
+      <div>
+        <h1 class="text-[52px] lg:text-[84px] font-thin m-0 leading-none tracking-tighter text-[#111]"
+          style={{ "font-family": '"Montserrat", sans-serif', "font-style": 'italic' }}>
+          {t().title}
+        </h1>
+        <p class="text-base text-[#52525b] mt-3.5 leading-relaxed whitespace-pre-line">
+          {t().subtitle}
+        </p>
       </div>
 
       {/* Body grid */}
-      <div class="grid gap-8 flex-1" style={{ "grid-template-columns": 'minmax(0,6fr) minmax(0,4fr)' }}>
+      <div class="grid gap-8 flex-1 grid-cols-1 lg:[grid-template-columns:minmax(0,6fr)_minmax(0,4fr)]">
 
         {/* LEFT: Preview + install */}
-        <div class="flex flex-col gap-4 sticky top-8 self-start">
+        <div class="flex flex-col gap-4 lg:sticky lg:top-8 self-start">
           <PreviewFrame url={url()} label={state().title} textColor={state().text} height={460}>
             <LivePreview state={state()} sampleText={t().sampleText} />
           </PreviewFrame>

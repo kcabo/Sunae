@@ -8,6 +8,7 @@ export interface BookmarkletState {
   padding: number
   margin: number
   maxWidth: number
+  borderRadius: number
   title: string
 }
 
@@ -21,6 +22,7 @@ export const DEFAULT_STATE: BookmarkletState = {
   padding: 32,
   margin: 48,
   maxWidth: 800,
+  borderRadius: 12,
   title: '📌 Memo',
 }
 
@@ -83,6 +85,7 @@ export const I18N = {
     padding: '内側余白',
     margin: '外側マージン',
     maxWidth: '最大幅',
+    borderRadius: '角丸',
     title_field: 'タイトル',
     install: 'インストール',
     installHint: '右のボタンをブックマークバーへドラッグ&ドロップ',
@@ -105,6 +108,7 @@ export const I18N = {
     padding: 'Inner padding',
     margin: 'Outer margin',
     maxWidth: 'Max width',
+    borderRadius: 'Corner radius',
     title_field: 'Title',
     install: 'Install',
     installHint: 'Drag the button on the right to your bookmark bar',
@@ -130,6 +134,7 @@ export function buildBookmarkletHTML(opts: Partial<BookmarkletState>): string {
     maxWidth = 800,
     padding = 32,
     margin = 48,
+    borderRadius = 0,
   } = opts
 
   const safeTitle = String(title)
@@ -148,7 +153,8 @@ export function buildBookmarkletHTML(opts: Partial<BookmarkletState>): string {
     `body{background:${bg1};color:${text};line-height:${lineHeight};`,
     `padding:${padding}px;font-family:${fontFamily};`,
     `margin:${margin}px auto;max-width:${maxWidth}px;`,
-    `min-height:calc(100vh - ${margin * 2}px);`,
+    `min-height:400px;`,
+    borderRadius > 0 ? `border-radius:${borderRadius}px;` : '',
     'box-shadow:0 2px 8px rgba(0,0,0,0.1);}',
     '</style></head>',
     '<body contenteditable></body>',

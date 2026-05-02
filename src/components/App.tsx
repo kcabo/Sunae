@@ -2,7 +2,6 @@ import { createSignal, createMemo } from 'solid-js'
 import {
   DEFAULT_STATE,
   PRESETS,
-  TITLE_TEMPLATES,
   I18N,
   buildBookmarkletURL,
   type BookmarkletState,
@@ -59,7 +58,7 @@ export default function App() {
       <div class="grid gap-8 flex-1" style={{ "grid-template-columns": 'minmax(0,6fr) minmax(0,4fr)' }}>
 
         {/* LEFT: Preview + install */}
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-4 sticky top-8 self-start">
           <PreviewFrame url={url()} label={state().title} textColor={state().text} height={460}>
             <LivePreview state={state()} sampleText={t().sampleText} />
           </PreviewFrame>
@@ -120,6 +119,12 @@ export default function App() {
               value={state().margin}
               onChange={v => update({ margin: v })}
               min={0} max={96} step={4}
+            />
+            <SliderField
+              label={t().borderRadius}
+              value={state().borderRadius}
+              onChange={v => update({ borderRadius: v })}
+              min={0} max={32} step={2}
             />
           </div>
 

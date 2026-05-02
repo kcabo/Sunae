@@ -69,7 +69,7 @@ export default function App() {
 
         {/* LEFT: Preview + install */}
         <div class="flex flex-col gap-5 lg:sticky lg:top-8 self-start">
-          <PreviewFrame url={url()} label={state().title} textColor={state().text} height={460}>
+          <PreviewFrame url={url()} label={state().title} textColor={state().text}>
             <LivePreview state={state()} sampleText={t().sampleText} />
           </PreviewFrame>
 
@@ -147,17 +147,19 @@ export default function App() {
           </button>
         </div>
       </div>
+
+      {/* Footer */}
+      <div class="text-sm text-zinc-400 text-center">
+        Made by <a href="https://kcabo.vercel.app/" target="_blank" rel="noopener" class="underline hover:text-zinc-600 transition-colors">kcabo</a>
+      </div>
     </div>
   )
 }
 
-function PreviewFrame(props: { url: string; label: string; textColor: string; height: number; children: any }) {
+function PreviewFrame(props: { url: string; label: string; textColor: string; children: any }) {
   return (
     <div
-      class="rounded-xl overflow-hidden bg-zinc-100 border border-zinc-200 flex flex-col"
-      style={{
-        height: `${props.height}px`,
-      }}
+      class="rounded-xl overflow-hidden bg-zinc-100 border border-zinc-200 flex flex-col h-[320px] lg:h-[460px]"
     >
       {/* Windows-style titlebar */}
       <div class="flex items-stretch bg-zinc-200 h-9">

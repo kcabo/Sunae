@@ -34,7 +34,7 @@ export default function App() {
   const t = createMemo(() => I18N[lang()])
 
   return (
-    <div class="relative w-full max-w-[1280px] min-h-screen mx-auto bg-[#fafaf9] text-[#27272a] px-5 py-8 lg:px-12 lg:py-10 box-border flex flex-col gap-7"
+    <div class="relative w-full max-w-[1280px] min-h-screen mx-auto bg-[#f9f7f4] text-[#27272a] px-5 py-8 lg:px-12 lg:py-10 box-border flex flex-col gap-7"
       style={{ "font-family": '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif' }}>
 
       {/* Lang toggle: top-right of container */}
@@ -44,11 +44,22 @@ export default function App() {
 
       {/* Header */}
       <div>
-        <h1 class="text-[52px] lg:text-[84px] font-thin m-0 leading-none tracking-tighter text-[#111]"
-          style={{ "font-family": '"Montserrat", sans-serif', "font-style": 'italic' }}>
+        <h1 class="grain-title font-light m-0 leading-none tracking-tighter text-[52px] lg:text-[84px]"
+          style={{
+            "font-family": '"Montserrat", sans-serif',
+            "font-style": 'italic',
+            "color": 'transparent',
+            "background": `
+              repeating-radial-gradient(#f9f7f4 0 0.0003%, #a89e8a 0 0.0004%) 120% 50% / 15vw 15vw,
+              repeating-conic-gradient(#f9f7f4 0 0.0003%, #786b58 0 0.0004%) 115% 50% / 20vw 20vw
+            `,
+            "background-blend-mode": 'difference',
+            "background-clip": 'text',
+            "-webkit-background-clip": 'text',
+          }}>
           {t().title}
         </h1>
-        <p class="text-base text-[#52525b] mt-3.5 leading-relaxed whitespace-pre-line">
+        <p class="text-base text-[#52525b] mt-3 leading-loose whitespace-pre-line">
           {t().subtitle}
         </p>
       </div>

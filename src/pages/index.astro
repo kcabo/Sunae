@@ -7,9 +7,10 @@ import App from '../components/App'
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} sizes="48x48" />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sunae — メモ・ブックマークレット</title>
+    <title>Sunae ― ブラウザを世界一シンプルなメモにする</title>
   </head>
   <body class="bg-[#fafaf9] min-h-screen">
     <App client:load />

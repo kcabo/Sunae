@@ -1,35 +1,17 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import Counter from '../components/Counter'
+import '../styles/global.css'
+import App from '../components/App'
 ---
 
-<Layout title="Sunae">
-  <main class="max-w-xl mx-auto px-6 py-24">
-    <h1 class="text-3xl font-light tracking-tight mb-2">Sunae</h1>
-    <p class="text-zinc-500 dark:text-zinc-400 text-sm mb-16">
-      A minimal starting point.
-    </p>
-
-    <section class="space-y-8">
-      <div>
-        <h2 class="text-xs uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-4">
-          Interactive — SolidJS
-        </h2>
-        <Counter client:load />
-      </div>
-
-      <hr class="border-zinc-100 dark:border-zinc-800" />
-
-      <div>
-        <h2 class="text-xs uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-4">
-          Stack
-        </h2>
-        <ul class="space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
-          <li>Astro 5</li>
-          <li>SolidJS</li>
-          <li>Tailwind CSS v4</li>
-        </ul>
-      </div>
-    </section>
-  </main>
-</Layout>
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sunae — メモ・ブックマークレット</title>
+  </head>
+  <body class="bg-[#fafaf9] min-h-screen">
+    <App client:load />
+  </body>
+</html>

@@ -1,5 +1,7 @@
 import { For } from 'solid-js'
 
+const LABEL_CLS = 'text-[13px] text-[#52525b] mb-2 font-medium'
+
 interface Option {
   value: number
   label: string
@@ -15,7 +17,7 @@ interface Props {
 export function ChipGroup(props: Props) {
   return (
     <div>
-      <div class="text-[13px] text-[#52525b] mb-2 font-medium">{props.label}</div>
+      <div class={LABEL_CLS}>{props.label}</div>
       <div class="grid grid-cols-6 gap-1">
         <For each={props.options}>
           {o => {

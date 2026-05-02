@@ -30,7 +30,7 @@ export function LivePreview(props: Props) {
     const text = props.sampleText
     const iframe = iframeRef
     if (!iframe) return
-    const html = buildBookmarkletHTML(props.state)
+    const html = buildBookmarkletHTML(props.state).replace('</style>', 'body{min-height:100vh!important;}</style>')
     iframe.srcdoc = html
     const onLoad = () => {
       try {
@@ -62,7 +62,7 @@ export function LivePreview(props: Props) {
         styleEl = doc.createElement('style')
         doc.head.appendChild(styleEl)
       }
-      styleEl.textContent = m[1]
+      styleEl.textContent = m[1] + 'body{min-height:100vh!important;}'
       const tm = newHTML.match(/<title>([\s\S]*?)<\/title>/)
       if (tm) doc.title = tm[1].replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')
     } catch {}

@@ -75,7 +75,7 @@ export const TITLE_TEMPLATES = [
 export const I18N = {
   ja: {
     title: 'Sunae',
-    subtitle: '世界一シンプルなメモ帳。ブラウザのブックマークから光の速さで起動。',
+    subtitle: 'ブラウザブックマークからメモを一瞬で起動できるように。\n保存も共有もできない、世界一気軽に使えるシンプルさ。',
     preview: 'プレビュー',
     presets: 'カラープリセット',
     bg1: '背景色（メモ帳）',
@@ -83,7 +83,7 @@ export const I18N = {
     text: '文字色',
     lineHeight: '行間',
     padding: '内側余白',
-    margin: '外側マージン',
+    margin: '外側余白',
     maxWidth: '最大幅',
     borderRadius: '角丸',
     title_field: 'タイトル',
@@ -98,7 +98,7 @@ export const I18N = {
   },
   en: {
     title: 'Sunae',
-    subtitle: 'The simplest notepad in the world. Launch from your bookmark bar at the speed of light.',
+    subtitle: 'Launch a notepad instantly from your browser bookmark.\nNo saving, no sharing — just the simplest way to jot something down.',
     preview: 'Preview',
     presets: 'Color presets',
     bg1: 'Background (page)',
@@ -124,18 +124,8 @@ export const I18N = {
 export type Lang = keyof typeof I18N
 
 export function buildBookmarkletHTML(opts: Partial<BookmarkletState>): string {
-  const {
-    title = '📝 メモ',
-    bg1 = '#ffffff',
-    bg2 = '#f5f5f5',
-    text = '#2c3e50',
-    fontFamily = 'sans-serif',
-    lineHeight = 1.5,
-    maxWidth = 800,
-    padding = 32,
-    margin = 48,
-    borderRadius = 0,
-  } = opts
+  const { title, bg1, bg2, text, fontFamily, lineHeight, maxWidth, padding, margin, borderRadius } =
+    { ...DEFAULT_STATE, ...opts }
 
   const safeTitle = String(title)
     .replace(/&/g, '&amp;')

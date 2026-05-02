@@ -1,6 +1,8 @@
 import { createSignal, createEffect, onCleanup, For } from 'solid-js'
 import { TITLE_TEMPLATES } from '../bookmarklet'
 
+const LABEL_CLS = 'text-[13px] text-[#52525b] mb-2 font-medium'
+
 interface Props {
   label: string
   value: string
@@ -22,7 +24,7 @@ export function TitleField(props: Props) {
 
   return (
     <div class="relative" ref={wrapRef}>
-      <div class="text-[13px] text-[#52525b] mb-2 font-medium">{props.label}</div>
+      <div class={LABEL_CLS}>{props.label}</div>
       <div class="flex border border-[#e4e4e7] rounded-md bg-white overflow-hidden">
         <input
           type="text"

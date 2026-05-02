@@ -25,8 +25,7 @@ export default function App() {
 
   const applyPreset = (id: string) => {
     const p = PRESETS.find(x => x.id === id)
-    if (!p) return
-    setState(s => ({ ...s, preset: p.id, bg1: p.bg1, bg2: p.bg2, text: p.text }))
+    if (p) update({ preset: p.id, bg1: p.bg1, bg2: p.bg2, text: p.text })
   }
 
   const reset = () => setState({ ...DEFAULT_STATE })
@@ -42,10 +41,10 @@ export default function App() {
       <div class="flex justify-between items-end">
         <div>
           <h1 class="text-[84px] font-thin m-0 leading-none tracking-tighter text-[#111]"
-            style={{ "font-family": '-apple-system, "Helvetica Neue", Helvetica, sans-serif' }}>
+            style={{ "font-family": '"Montserrat", sans-serif', "font-style": 'italic' }}>
             {t().title}
           </h1>
-          <p class="text-base text-[#52525b] mt-3.5 max-w-[560px] leading-relaxed">
+          <p class="text-base text-[#52525b] mt-3.5 max-w-[560px] leading-relaxed whitespace-pre-line">
             {t().subtitle}
           </p>
         </div>

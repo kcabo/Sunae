@@ -60,7 +60,7 @@ export default function App() {
 
         {/* LEFT: Preview + install */}
         <div class="flex flex-col gap-4">
-          <PreviewFrame url={url()} label={state().title} height={460}>
+          <PreviewFrame url={url()} label={state().title} textColor={state().text} height={460}>
             <LivePreview state={state()} sampleText={t().sampleText} />
           </PreviewFrame>
 
@@ -136,7 +136,7 @@ export default function App() {
   )
 }
 
-function PreviewFrame(props: { url: string; label: string; height: number; children: any }) {
+function PreviewFrame(props: { url: string; label: string; textColor: string; height: number; children: any }) {
   const dot = (color: string) => (
     <div class="w-[11px] h-[11px] rounded-full" style={{ background: color }} />
   )
@@ -155,9 +155,8 @@ function PreviewFrame(props: { url: string; label: string; height: number; child
           {dot('#ff5f57')}{dot('#febc2e')}{dot('#28c840')}
         </div>
         <div class="bg-white h-7 px-3 flex items-center gap-2 rounded-t-lg text-xs text-[#27272a] min-w-[140px] max-w-[220px]">
-          <svg width="13" height="13" viewBox="0 0 16 16" class="shrink-0 opacity-85">
-            <path d="M3 1.5h6.5L13 5v9.5H3v-13z" fill="none" stroke="#27272a" stroke-width="1.2" stroke-linejoin="round" />
-            <path d="M9.5 1.5V5H13" fill="none" stroke="#27272a" stroke-width="1.2" stroke-linejoin="round" />
+          <svg width="13" height="13" viewBox="0 0 32 32" class="shrink-0">
+            <circle cx="16" cy="16" r="6" fill={props.textColor} />
           </svg>
           <span class="flex-1 truncate">{props.label}</span>
           <span class="text-[#71717a] text-[13px] leading-none">×</span>

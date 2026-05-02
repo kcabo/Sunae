@@ -34,14 +34,14 @@ export function TitleField(props: Props) {
           type="button"
           onClick={() => setOpen(o => !o)}
           aria-label="templates"
-          class="border-none border-l border-[#e4e4e7] bg-white text-[#52525b] cursor-pointer px-3.5 text-sm"
+          class="border-none border-l border-[#e4e4e7] bg-white text-[#52525b] cursor-pointer px-3.5 text-xs"
           style={{ "border-left": '1px solid #e4e4e7' }}
         >
-          ▾
+          ▼
         </button>
       </div>
       {open() && (
-        <div class="absolute top-full left-0 right-0 mt-1 bg-white border border-[#e4e4e7] rounded-md shadow-[0_8px_20px_rgba(0,0,0,0.08)] p-1 z-10 grid grid-cols-2 gap-0.5">
+        <div class="absolute top-full left-0 right-0 mt-1 bg-white border border-[#e4e4e7] rounded-md shadow-[0_8px_20px_rgba(0,0,0,0.08)] p-1 z-50 grid grid-cols-2 gap-0.5">
           <For each={TITLE_TEMPLATES}>
             {t => (
               <button

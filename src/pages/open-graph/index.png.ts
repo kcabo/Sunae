@@ -9,14 +9,14 @@ import { I18N } from '../../i18n'
 const WIDTH = 1200
 const HEIGHT = 630
 /** 四辺で共通の安全余白。上下左右をこの一つの値だけで揃える */
-const INSET = 72
-/** 下端の装飾バー。余白の外側に置く */
+const INSET = 88
+/** 下端の装飾バー。安全余白のさらに外側に置く */
 const BAR = 12
 /** ロゴは余白を切り落とした 99x104。この比率を保ったまま高さで指定する */
-const LOGO_H = 180
+const LOGO_H = 160
 const LOGO_W = Math.round((LOGO_H * 99) / 104)
-/** ロゴだけキャンバス幅の 5% ぶん右へ寄せる */
-const LOGO_OFFSET = Math.round(WIDTH * 0.05)
+/** ロゴだけキャンバス幅の 2% ぶん右へ寄せる */
+const LOGO_OFFSET = Math.round(WIDTH * 0.02)
 
 const FONTS = {
   montserrat: 'https://cdn.jsdelivr.net/fontsource/fonts/montserrat@latest/latin-200-italic.ttf',
@@ -43,7 +43,6 @@ const markup = el(
     flexDirection: 'column',
     justifyContent: 'space-between',
     padding: `${INSET}px`,
-    paddingBottom: `${INSET - BAR}px`,
     backgroundImage: 'linear-gradient(180deg, #fafaf9 0%, #ebebe8 100%)',
     borderBottom: `${BAR}px solid #27272a`,
   },
@@ -64,7 +63,7 @@ const markup = el(
         {
           fontFamily: 'Montserrat',
           fontStyle: 'italic',
-          fontSize: 148,
+          fontSize: 144,
           lineHeight: 1,
           color: '#27272a',
         },
@@ -74,10 +73,10 @@ const markup = el(
         'div',
         {
           fontFamily: 'Noto Sans JP',
-          fontSize: 34,
+          fontSize: 32,
           lineHeight: 1,
           color: '#71717a',
-          marginTop: 28,
+          marginTop: 32,
         },
         I18N.ja.ogDescription,
       ),

@@ -42,7 +42,7 @@ export function LayoutFields(props: Props) {
           label={props.t.maxWidth}
           value={props.state.maxWidth}
           onChange={(v) => props.onChange({ maxWidth: v })}
-          min={600}
+          min={800}
           max={1600}
           step={200}
         />

@@ -1,13 +1,11 @@
-import { createEffect, createSignal, on, onCleanup } from 'solid-js'
+import { createEffect, createMemo, createSignal, on, onCleanup } from 'solid-js'
 
 import { type BookmarkletState, buildBookmarkletCSS, buildBookmarkletHTML } from '../bookmarklet'
 
 /** プレビュー枠は縮小表示なので、枠いっぱいに見せつつ内側のスクロールを止める */
 const PREVIEW_CSS_PATCH = 'html{overflow:hidden;}body{min-height:100vh!important;}'
-/** メモ帳の左右に必ず見えるようにする外側背景の幅 */
-const OUTER_MARGIN = 160
-/** iframe を描く仮想の横幅の下限 */
-const MIN_VIRTUAL_WIDTH = 1000
+/** メモ帳の左右に外側背景を見せるぶんの幅 */
+const OUTER_MARGIN = 200
 
 /** サンプル文言を contenteditable に流し込める HTML にする */
 function toPreviewHTML(text: string): string {
@@ -27,9 +25,13 @@ function styleElementOf(doc: Document): HTMLStyleElement {
   return created
 }
 
-/** 枠の実寸を監視して、仮想幅に対する縮小率を返す */
+/**
+ * 枠の実寸を監視して、仮想幅に対する縮小率を返す。
+ * 縮小率は幅の signal から導出する。ResizeObserver のコールバックの中で
+ * 仮想幅を読むと依存として追跡されず、最大幅を変えても更新されない。
+ */
 function useScale(getWrap: () => HTMLDivElement | undefined, virtualWidth: () => number) {
-  const [scale, setScale] = createSignal(1)
+  const [wrapWidth, setWrapWidth] = createSignal(0)
 
   createEffect(() => {
     const wrap = getWrap()
@@ -38,15 +40,17 @@ function useScale(getWrap: () => HTMLDivElement | undefined, virtualWidth: () =>
     }
     const observer = new ResizeObserver((entries) => {
       for (const entry of entries) {
-        const { width } = entry.contentRect
-        setScale(width > 0 ? width / virtualWidth() : 1)
+        setWrapWidth(entry.contentRect.width)
       }
     })
     observer.observe(wrap)
     onCleanup(() => observer.disconnect())
   })
 
-  return scale
+  return createMemo(() => {
+    const width = wrapWidth()
+    return width > 0 ? width / virtualWidth() : 1
+  })
 }
 
 /**
@@ -98,9 +102,8 @@ interface Props {
 }
 
 export function LivePreview(props: Props) {
-  // 最大幅をどう設定しても、外側の背景色が左右に見えるだけの幅を確保する
-  const virtualWidth = () =>
-    props.virtualWidth ?? Math.max(MIN_VIRTUAL_WIDTH, props.state.maxWidth + OUTER_MARGIN)
+  // 最大幅をどう設定しても、外側の背景色が左右に見えるようにする
+  const virtualWidth = () => props.virtualWidth ?? props.state.maxWidth + OUTER_MARGIN
   let wrapRef: HTMLDivElement | undefined
   let iframeRef: HTMLIFrameElement | undefined
 

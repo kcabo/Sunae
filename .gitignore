@@ -24,3 +24,5 @@ pnpm-debug.log*
 .idea/
 
 z/
+# editor / agent local config
+.claude/

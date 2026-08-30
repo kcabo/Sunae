@@ -24,19 +24,22 @@ export function SliderField(props: Props) {
         <span class="font-mono text-sm text-zinc-500">{props.value}px</span>
       </div>
 
-      <div class="relative flex h-9 items-center overflow-hidden rounded-md border border-zinc-200 bg-white">
-        {/* つまみの中心までを塗る */}
-        <div
-          class="absolute left-0 h-full bg-zinc-100"
-          style={{ width: `calc(${THUMB_WIDTH / 2}px + ${ratio()} * (100% - ${THUMB_WIDTH}px))` }}
-        />
+      {/* つまみがトラックから少しはみ出すよう、トラックだけを内側で切り抜く */}
+      <div class="relative flex h-10 items-center">
+        <div class="absolute inset-x-0 h-9 overflow-hidden rounded-md border border-zinc-200 bg-white">
+          {/* つまみの中心までを塗る */}
+          <div
+            class="absolute left-0 h-full bg-zinc-100"
+            style={{ width: `calc(${THUMB_WIDTH / 2}px + ${ratio()} * (100% - ${THUMB_WIDTH}px))` }}
+          />
 
-        {/* 目盛り。両端をつまみの可動範囲に合わせ、あとは等間隔に置く */}
-        <div
-          class="pointer-events-none absolute flex justify-between"
-          style={{ left: `${THUMB_WIDTH / 2}px`, right: `${THUMB_WIDTH / 2}px` }}
-        >
-          <For each={ticks()}>{() => <div class="size-1 rounded-full bg-zinc-300" />}</For>
+          {/* 目盛り。両端をつまみの可動範囲に合わせ、あとは等間隔に置く */}
+          <div
+            class="absolute inset-y-0 flex items-center justify-between"
+            style={{ left: `${THUMB_WIDTH / 2}px`, right: `${THUMB_WIDTH / 2}px` }}
+          >
+            <For each={ticks()}>{() => <div class="size-1 rounded-full bg-zinc-300" />}</For>
+          </div>
         </div>
 
         <input
@@ -46,7 +49,7 @@ export function SliderField(props: Props) {
           step={props.step}
           value={props.value}
           onInput={(e) => props.onChange(Number(e.currentTarget.value))}
-          class="sunae-slider relative w-full"
+          class="sunae-slider absolute inset-0 w-full"
         />
       </div>
     </div>

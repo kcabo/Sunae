@@ -5,6 +5,8 @@ const MESSAGES = {
     subtitle:
       'あなただけのメモ帳を作れます。\n作ったメモ帳はブラウザのブックマークに登録でき、クリック一つで即座に開けます。\n余計な機能は一切ありません。気軽にメモして、閉じたら消える。ただそれだけの、世界で一番シンプルなメモ帳です。',
     presets: 'カラープリセット',
+    light: 'ライト',
+    dark: 'ダーク',
     bg1: '背景色（メモ帳）',
     bg2: '背景色（外側）',
     text: '文字色',
@@ -27,6 +29,8 @@ const MESSAGES = {
     subtitle:
       "Create your own notepad.\nRegister it as a browser bookmark and open it instantly with one click.\nNo extra features. Just write, close, and it's gone. The simplest notepad in the world.",
     presets: 'Color presets',
+    light: 'Light',
+    dark: 'Dark',
     bg1: 'Background (page)',
     bg2: 'Background (outer)',
     text: 'Text color',

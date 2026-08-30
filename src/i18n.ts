@@ -1,4 +1,4 @@
-export const I18N = {
+const MESSAGES = {
   ja: {
     title: 'Sunae',
     ogDescription: '砂絵のように儚い、世界一シンプルなメモ帳',
@@ -43,6 +43,10 @@ export const I18N = {
     reset: 'Reset',
     sampleText: "Today's tasks\n· Draft project doc\n· Prep for meeting\n· Reply to emails",
   },
-} as const
+}
 
-export type Lang = keyof typeof I18N
+export type Lang = keyof typeof MESSAGES
+/** 言語ごとの文言。ja と en は同じキーを持つ */
+export type Messages = (typeof MESSAGES)['ja']
+
+export const I18N: Record<Lang, Messages> = MESSAGES

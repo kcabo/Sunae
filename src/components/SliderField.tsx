@@ -10,7 +10,7 @@ interface Props {
 }
 
 /** つまみの幅。目盛りの位置をつまみの可動範囲に合わせるために使う */
-const THUMB_WIDTH = 26
+const THUMB_WIDTH = 28
 
 export function SliderField(props: Props) {
   const stepCount = () => Math.round((props.max - props.min) / props.step)
@@ -19,17 +19,15 @@ export function SliderField(props: Props) {
 
   return (
     <div>
-      <div class="mb-1 flex items-baseline justify-between">
+      <div class="mb-2 flex items-baseline justify-between">
         <span class="text-sm font-medium text-zinc-600">{props.label}</span>
         <span class="font-mono text-sm text-zinc-500">{props.value}px</span>
       </div>
 
-      <div class="relative flex h-8 items-center">
-        <div class="absolute inset-x-0 h-2 rounded-full bg-zinc-100" />
-
+      <div class="relative flex h-9 items-center overflow-hidden rounded-full bg-zinc-100">
         {/* つまみの中心までを塗る */}
         <div
-          class="absolute left-0 h-2 rounded-full bg-zinc-300"
+          class="absolute left-0 h-full bg-zinc-200"
           style={{ width: `calc(${THUMB_WIDTH / 2}px + ${ratio()} * (100% - ${THUMB_WIDTH}px))` }}
         />
 
@@ -38,7 +36,7 @@ export function SliderField(props: Props) {
           class="pointer-events-none absolute flex justify-between"
           style={{ left: `${THUMB_WIDTH / 2}px`, right: `${THUMB_WIDTH / 2}px` }}
         >
-          <For each={ticks()}>{() => <div class="size-1 rounded-full bg-zinc-400/70" />}</For>
+          <For each={ticks()}>{() => <div class="size-1 rounded-full bg-zinc-400/60" />}</For>
         </div>
 
         <input

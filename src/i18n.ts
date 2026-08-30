@@ -1,6 +1,7 @@
 export const I18N = {
   ja: {
     title: 'Sunae',
+    ogDescription: '砂絵のように儚い、世界一シンプルなメモ帳',
     subtitle:
       'あなただけのメモ帳を作れます。\n作ったメモ帳はブラウザのブックマークに登録でき、クリック一つで即座に開けます。\n余計な機能は一切ありません。気軽にメモして、閉じたら消える。ただそれだけの、世界で一番シンプルなメモ帳です。',
     presets: 'カラープリセット',
@@ -22,6 +23,7 @@ export const I18N = {
   },
   en: {
     title: 'Sunae',
+    ogDescription: 'The simplest notepad in the world, as fleeting as sand art.',
     subtitle:
       "Create your own notepad.\nRegister it as a browser bookmark and open it instantly with one click.\nNo extra features. Just write, close, and it's gone. The simplest notepad in the world.",
     presets: 'Color presets',

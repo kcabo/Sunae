@@ -22,7 +22,7 @@
   .sunae-slider {
     -webkit-appearance: none;
     appearance: none;
-    height: 30px;
+    height: 36px;
     background: transparent;
     cursor: grab;
   }
@@ -32,43 +32,42 @@
   }
 
   .sunae-slider::-webkit-slider-runnable-track {
-    height: 30px;
+    height: 36px;
     background: transparent;
   }
 
   .sunae-slider::-moz-range-track {
-    height: 30px;
+    height: 36px;
     background: transparent;
   }
 
+  /* 選択状態を zinc-900 で示す点を ChipGroup / PresetGrid と揃える */
   .sunae-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 9999px;
-    background: #fff;
-    box-shadow: 0 1px 4px rgb(0 0 0 / 0.22);
-    transition: box-shadow 0.15s;
+    width: 28px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: var(--color-zinc-900);
+    transition: background-color 0.15s;
   }
 
   .sunae-slider::-moz-range-thumb {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 36px;
     border: none;
-    border-radius: 9999px;
-    background: #fff;
-    box-shadow: 0 1px 4px rgb(0 0 0 / 0.22);
-    transition: box-shadow 0.15s;
+    border-radius: var(--radius-md);
+    background: var(--color-zinc-900);
+    transition: background-color 0.15s;
   }
 
   .sunae-slider:hover::-webkit-slider-thumb,
   .sunae-slider:focus-visible::-webkit-slider-thumb {
-    box-shadow: 0 2px 6px rgb(0 0 0 / 0.3);
+    background: var(--color-zinc-700);
   }
 
   .sunae-slider:hover::-moz-range-thumb,
   .sunae-slider:focus-visible::-moz-range-thumb {
-    box-shadow: 0 2px 6px rgb(0 0 0 / 0.3);
+    background: var(--color-zinc-700);
   }
 }

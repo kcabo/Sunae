@@ -19,7 +19,7 @@ export function SliderField(props: Props) {
 
   return (
     <div>
-      <div class="mb-2 flex items-baseline justify-between">
+      <div class="mb-3 flex items-baseline justify-between">
         <span class="text-sm font-medium text-zinc-600">{props.label}</span>
         <span class="font-mono text-sm text-zinc-500">{props.value}px</span>
       </div>

@@ -25,8 +25,8 @@ export const { getStaticPaths, GET } = await OGImageRoute({
   getImageOptions: (_path, page: { title: string; description: string }) => ({
     title: page.title,
     description: page.description,
-    padding: 90,
-    logo: { path: './src/assets/og-logo.png', size: [160] },
+    padding: 64,
+    logo: { path: './src/assets/og-logo.png', size: [288] },
     bgGradient: [
       [250, 250, 249],
       [235, 235, 232],
@@ -35,13 +35,13 @@ export const { getStaticPaths, GET } = await OGImageRoute({
     font: {
       title: {
         families: [MONTSERRAT, NOTO_SANS_JP],
-        size: 150,
+        size: 108,
         color: [39, 39, 42],
       },
       description: {
         families: [NOTO_SANS_JP, MONTSERRAT],
-        size: 40,
-        lineHeight: 1.6,
+        size: 34,
+        lineHeight: 1.5,
         color: [113, 113, 122],
       },
     },

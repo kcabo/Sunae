@@ -9,7 +9,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "typecheck": "astro check",
+    "check": "astro check && oxlint && oxfmt --check"
   },
   "dependencies": {
     "@astrojs/solid-js": "^6.0.1",
@@ -17,5 +23,12 @@
     "astro": "^6.2.1",
     "solid-js": "^1.9.12",
     "tailwindcss": "^4.2.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "oxfmt": "^0.65.0",
+    "oxlint": "^1.80.0",
+    "oxlint-tailwindcss": "^1.10.2",
+    "typescript": "^7.0.2"
   }
 }

@@ -12,7 +12,10 @@ export function InstallRow(props: Props) {
     <div class="flex items-center gap-4 rounded-xl border border-zinc-200 bg-white p-6">
       <div class="min-w-0 flex-1">
         <div class="mb-0.5 text-sm font-semibold text-zinc-800">{props.t.install}</div>
-        <div class="text-sm leading-snug text-zinc-500">{props.t.installHint}</div>
+        {/* 日本語を文節で折り返す。非対応ブラウザでは通常の折り返しになる */}
+        <div class="text-sm leading-snug [word-break:auto-phrase] text-zinc-500">
+          {props.t.installHint}
+        </div>
       </div>
       {/* ブックマークバーへドラッグさせるためのリンク。クリックでの遷移はブラウザが塞ぐ */}
       <a

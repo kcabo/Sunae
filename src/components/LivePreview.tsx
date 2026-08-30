@@ -4,8 +4,10 @@ import { type BookmarkletState, buildBookmarkletCSS, buildBookmarkletHTML } from
 
 /** プレビュー枠は縮小表示なので、枠いっぱいに見せつつ内側のスクロールを止める */
 const PREVIEW_CSS_PATCH = 'html{overflow:hidden;}body{min-height:100vh!important;}'
-/** iframe を描く仮想の横幅。実寸に合わせて縮小して表示する */
-const DEFAULT_VIRTUAL_WIDTH = 1000
+/** メモ帳の左右に必ず見えるようにする外側背景の幅 */
+const OUTER_MARGIN = 160
+/** iframe を描く仮想の横幅の下限 */
+const MIN_VIRTUAL_WIDTH = 1000
 
 /** サンプル文言を contenteditable に流し込める HTML にする */
 function toPreviewHTML(text: string): string {
@@ -96,7 +98,9 @@ interface Props {
 }
 
 export function LivePreview(props: Props) {
-  const virtualWidth = () => props.virtualWidth ?? DEFAULT_VIRTUAL_WIDTH
+  // 最大幅をどう設定しても、外側の背景色が左右に見えるだけの幅を確保する
+  const virtualWidth = () =>
+    props.virtualWidth ?? Math.max(MIN_VIRTUAL_WIDTH, props.state.maxWidth + OUTER_MARGIN)
   let wrapRef: HTMLDivElement | undefined
   let iframeRef: HTMLIFrameElement | undefined
 

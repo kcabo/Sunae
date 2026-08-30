@@ -134,7 +134,7 @@ export default function App() {
               onChange={(v) => update({ padding: v })}
               min={8}
               max={64}
-              step={4}
+              step={8}
             />
             <SliderField
               label={t().margin}
@@ -142,7 +142,7 @@ export default function App() {
               onChange={(v) => update({ margin: v })}
               min={0}
               max={96}
-              step={4}
+              step={12}
             />
             <SliderField
               label={t().maxWidth}
@@ -150,7 +150,7 @@ export default function App() {
               onChange={(v) => update({ maxWidth: v })}
               min={400}
               max={1200}
-              step={50}
+              step={100}
             />
             <SliderField
               label={t().borderRadius}
@@ -158,7 +158,7 @@ export default function App() {
               onChange={(v) => update({ borderRadius: v })}
               min={0}
               max={32}
-              step={2}
+              step={4}
             />
           </div>
 

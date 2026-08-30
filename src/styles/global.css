@@ -16,3 +16,60 @@
 .grain-title {
   animation: grain-shift 60s linear infinite;
 }
+
+@layer components {
+  /* SliderField のつまみ。トラックと目盛りは JSX 側の要素で描いている */
+  .sunae-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 22px;
+    background: transparent;
+    cursor: grab;
+  }
+
+  .sunae-slider:active {
+    cursor: grabbing;
+  }
+
+  .sunae-slider::-webkit-slider-runnable-track {
+    height: 22px;
+    background: transparent;
+  }
+
+  .sunae-slider::-moz-range-track {
+    height: 22px;
+    background: transparent;
+  }
+
+  .sunae-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 26px;
+    height: 22px;
+    border: 1px solid var(--color-zinc-300);
+    border-radius: 9999px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.18);
+    transition: box-shadow 0.15s;
+  }
+
+  .sunae-slider::-moz-range-thumb {
+    width: 26px;
+    height: 22px;
+    border: 1px solid var(--color-zinc-300);
+    border-radius: 9999px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.18);
+    transition: box-shadow 0.15s;
+  }
+
+  .sunae-slider:hover::-webkit-slider-thumb,
+  .sunae-slider:focus-visible::-webkit-slider-thumb {
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.28);
+  }
+
+  .sunae-slider:hover::-moz-range-thumb,
+  .sunae-slider:focus-visible::-moz-range-thumb {
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.28);
+  }
+}

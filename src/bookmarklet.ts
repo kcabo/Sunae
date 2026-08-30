@@ -3,7 +3,6 @@ export interface BookmarkletState {
   bg1: string
   bg2: string
   text: string
-  fontFamily: string
   lineHeight: number
   padding: number
   margin: number
@@ -12,19 +11,8 @@ export interface BookmarkletState {
   title: string
 }
 
-export const DEFAULT_STATE: BookmarkletState = {
-  preset: 'default',
-  bg1: '#ffffff',
-  bg2: '#f5f5f5',
-  text: '#2c3e50',
-  fontFamily: 'sans-serif',
-  lineHeight: 1.625,
-  padding: 32,
-  margin: 48,
-  maxWidth: 800,
-  borderRadius: 12,
-  title: '📌 Memo',
-}
+/** 生成される data: URL に埋め込む固定のフォント指定 */
+export const FONT_FAMILY = 'sans-serif'
 
 export const PRESETS = [
   // Light
@@ -63,6 +51,21 @@ export const PRESETS = [
   { id: 'volcano', name: 'Volcano', bg1: '#1e0a08', bg2: '#120604', text: '#ff6040' },
 ]
 
+const [DEFAULT_PRESET] = PRESETS
+
+export const DEFAULT_STATE: BookmarkletState = {
+  preset: DEFAULT_PRESET.id,
+  bg1: DEFAULT_PRESET.bg1,
+  bg2: DEFAULT_PRESET.bg2,
+  text: DEFAULT_PRESET.text,
+  lineHeight: 1.625,
+  padding: 32,
+  margin: 48,
+  maxWidth: 800,
+  borderRadius: 12,
+  title: '📌 Memo',
+}
+
 export const TITLE_TEMPLATES = [
   { emoji: '📌', label: 'Memo' },
   { emoji: '✏️', label: 'Note' },
@@ -77,7 +80,6 @@ export const I18N = {
     title: 'Sunae',
     subtitle:
       'あなただけのメモ帳を作れます。\n作ったメモ帳はブラウザのブックマークに登録でき、クリック一つで即座に開けます。\n余計な機能は一切ありません。気軽にメモして、閉じたら消える。ただそれだけの、世界で一番シンプルなメモ帳です。',
-    preview: 'プレビュー',
     presets: 'カラープリセット',
     bg1: '背景色（メモ帳）',
     bg2: '背景色（外側）',
@@ -92,8 +94,6 @@ export const I18N = {
     installHint: '右のボタンをブックマークバーへドラッグ&ドロップ',
     copyUrl: 'URLをコピー',
     copied: 'コピーしました!',
-    drag: 'ドラッグ&ドロップ',
-    test: 'テストで開く',
     reset: 'リセット',
     sampleText: '今日のタスク\n・プロジェクトの資料を作成\n・ミーティングの準備\n・メールの返信',
   },
@@ -101,7 +101,6 @@ export const I18N = {
     title: 'Sunae',
     subtitle:
       "Create your own notepad.\nRegister it as a browser bookmark and open it instantly with one click.\nNo extra features. Just write, close, and it's gone. The simplest notepad in the world.",
-    preview: 'Preview',
     presets: 'Color presets',
     bg1: 'Background (page)',
     bg2: 'Background (outer)',
@@ -116,8 +115,6 @@ export const I18N = {
     installHint: 'Drag the button on the right to your bookmark bar',
     copyUrl: 'Copy URL',
     copied: 'Copied!',
-    drag: 'Drag & drop',
-    test: 'Open test',
     reset: 'Reset',
     sampleText: "Today's tasks\n· Draft project doc\n· Prep for meeting\n· Reply to emails",
   },
@@ -125,9 +122,26 @@ export const I18N = {
 
 export type Lang = keyof typeof I18N
 
+/** メモ帳本体のスタイル。プレビューでも同じ関数を使って見た目を一致させる */
+export function buildBookmarkletCSS(opts: Partial<BookmarkletState>): string {
+  const { bg1, bg2, text, lineHeight, maxWidth, padding, margin, borderRadius } = {
+    ...DEFAULT_STATE,
+    ...opts,
+  }
+
+  return [
+    `html{background:${bg2};min-height:100vh;}`,
+    `body{background:${bg1};color:${text};line-height:${lineHeight};`,
+    `padding:${padding}px;font-family:${FONT_FAMILY};`,
+    `margin:${margin}px auto;max-width:${maxWidth}px;`,
+    'min-height:400px;',
+    borderRadius > 0 ? `border-radius:${borderRadius}px;` : '',
+    'box-shadow:0 2px 8px rgba(0,0,0,0.1);}',
+  ].join('')
+}
+
 export function buildBookmarkletHTML(opts: Partial<BookmarkletState>): string {
-  const { title, bg1, bg2, text, fontFamily, lineHeight, maxWidth, padding, margin, borderRadius } =
-    { ...DEFAULT_STATE, ...opts }
+  const { title, text } = { ...DEFAULT_STATE, ...opts }
 
   const safeTitle = String(title).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
@@ -137,15 +151,7 @@ export function buildBookmarkletHTML(opts: Partial<BookmarkletState>): string {
     '<head><meta charset="UTF-8">',
     `<title>${safeTitle}</title>`,
     `<link rel="icon" href="data:image/svg+xml,${encodeURIComponent(faviconSvg)}">`,
-    '<style>',
-    `html{background:${bg2};min-height:100vh;}`,
-    `body{background:${bg1};color:${text};line-height:${lineHeight};`,
-    `padding:${padding}px;font-family:${fontFamily};`,
-    `margin:${margin}px auto;max-width:${maxWidth}px;`,
-    `min-height:400px;`,
-    borderRadius > 0 ? `border-radius:${borderRadius}px;` : '',
-    'box-shadow:0 2px 8px rgba(0,0,0,0.1);}',
-    '</style></head>',
+    `<style>${buildBookmarkletCSS(opts)}</style></head>`,
     '<body contenteditable></body>',
   ].join('')
 }

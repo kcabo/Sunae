@@ -1,5 +1,11 @@
 const LABEL_CLS = 'text-sm text-zinc-600 mb-2 font-medium'
 
+/**
+ * 入力値はそのまま生成 CSS に埋め込まれるため、hex 以外は state に流さない。
+ * `#` や `#ff` のような入力途中の値は無視され、入力欄の表示だけが残る。
+ */
+const HEX_COLOR = /^#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/i
+
 interface Props {
   label: string
   value: string
@@ -25,7 +31,10 @@ export function ColorField(props: Props) {
         <input
           type="text"
           value={props.value}
-          onInput={(e) => props.onChange((e.target as HTMLInputElement).value)}
+          onInput={(e) => {
+            const v = e.currentTarget.value.trim()
+            if (HEX_COLOR.test(v)) props.onChange(v)
+          }}
           class="flex-1 border-none bg-transparent px-1 font-mono text-sm text-zinc-800 outline-none"
         />
       </div>

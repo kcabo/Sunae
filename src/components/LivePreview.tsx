@@ -1,6 +1,8 @@
-import { createSignal, createEffect, onCleanup } from 'solid-js'
+import { createEffect, createSignal, on, onCleanup } from 'solid-js'
+import { type BookmarkletState, buildBookmarkletCSS, buildBookmarkletHTML } from '../bookmarklet'
 
-import { buildBookmarkletHTML, type BookmarkletState } from '../bookmarklet'
+/** プレビュー枠内では body を枠いっぱいに見せたいので min-height だけ上書きする */
+const PREVIEW_CSS_PATCH = 'body{min-height:100vh!important;}'
 
 interface Props {
   state: BookmarkletState
@@ -16,7 +18,7 @@ export function LivePreview(props: Props) {
 
   createEffect(() => {
     if (!wrapRef) return
-    const ro = new ResizeObserver((entries) => {
+    const ro = new ResizeObserver(entries => {
       for (const e of entries) {
         const w = e.contentRect.width
         setScale(w > 0 ? w / virtualWidth() : 1)
@@ -26,68 +28,60 @@ export function LivePreview(props: Props) {
     onCleanup(() => ro.disconnect())
   })
 
-  // Full reload when sampleText changes
-  createEffect(() => {
-    const text = props.sampleText
-    const iframe = iframeRef
-    if (!iframe) return
-    const html = buildBookmarkletHTML(props.state).replace(
-      '</style>',
-      'body{min-height:100vh!important;}</style>',
-    )
-    iframe.srcdoc = html
-    const onLoad = () => {
-      try {
-        const doc = iframe.contentDocument
-        if (!doc?.body) return
-        const lines = (text || '').split('\n')
-        doc.body.innerHTML = lines
-          .map((l) => (l.length === 0 ? '<br>' : `<div>${l.replace(/</g, '&lt;')}</div>`))
-          .join('')
-      } catch {}
-    }
-    iframe.addEventListener('load', onLoad)
-    onCleanup(() => iframe.removeEventListener('load', onLoad))
-  })
+  // サンプル文言が変わったときだけ iframe を作り直す。
+  // on() のコールバックは非追跡なので、state の変更ではリロードされない。
+  createEffect(
+    on(
+      () => props.sampleText,
+      text => {
+        const iframe = iframeRef
+        if (!iframe) return
+        iframe.srcdoc = buildBookmarkletHTML(props.state).replace(
+          '</style>',
+          `${PREVIEW_CSS_PATCH}</style>`,
+        )
+        const onLoad = () => {
+          const doc = iframe.contentDocument
+          if (!doc?.body) return
+          doc.body.innerHTML = (text ?? '')
+            .split('\n')
+            .map(l => (l.length === 0 ? '<br>' : `<div>${l.replace(/</g, '&lt;')}</div>`))
+            .join('')
+        }
+        iframe.addEventListener('load', onLoad)
+        onCleanup(() => iframe.removeEventListener('load', onLoad))
+      },
+    ),
+  )
 
-  // Style-only swap when state changes
+  // 設定変更はスタイルの差し替えだけで反映する (入力内容を保ったまま更新できる)
   createEffect(() => {
-    const s = props.state
     const iframe = iframeRef
-    if (!iframe) return
-    try {
-      const doc = iframe.contentDocument
-      if (!doc?.head) return
-      const newHTML = buildBookmarkletHTML(s)
-      const m = newHTML.match(/<style>([\s\S]*?)<\/style>/)
-      if (!m) return
-      let styleEl = doc.head.querySelector('style')
-      if (!styleEl) {
-        styleEl = doc.createElement('style')
-        doc.head.appendChild(styleEl)
-      }
-      styleEl.textContent = m[1] + 'body{min-height:100vh!important;}'
-      const tm = newHTML.match(/<title>([\s\S]*?)<\/title>/)
-      if (tm) doc.title = tm[1].replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')
-    } catch {}
+    const doc = iframe?.contentDocument
+    if (!doc?.head) return
+
+    let styleEl = doc.head.querySelector('style')
+    if (!styleEl) {
+      styleEl = doc.createElement('style')
+      doc.head.appendChild(styleEl)
+    }
+    styleEl.textContent = buildBookmarkletCSS(props.state) + PREVIEW_CSS_PATCH
+    doc.title = props.state.title
   })
 
   return (
-    <div ref={wrapRef} class="relative h-full w-full overflow-hidden bg-white">
-      <style>{`.sunae-iframe::-webkit-scrollbar{display:none}`}</style>
+    <div ref={wrapRef} class="relative size-full overflow-hidden bg-white">
       <iframe
         ref={iframeRef}
         class="sunae-iframe block border-none"
         title="bookmarklet-preview"
         sandbox="allow-same-origin"
-        scrolling="no"
         style={{
           width: `${virtualWidth()}px`,
           height: scale() > 0 ? `${100 / scale()}%` : '100%',
           transform: `scale(${scale()})`,
           'transform-origin': 'top left',
           background: '#fff',
-          'scrollbar-width': 'none',
         }}
       />
     </div>

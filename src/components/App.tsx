@@ -149,6 +149,14 @@ export default function App() {
               step={4}
             />
             <SliderField
+              label={t().maxWidth}
+              value={state().maxWidth}
+              onChange={(v) => update({ maxWidth: v })}
+              min={400}
+              max={1200}
+              step={50}
+            />
+            <SliderField
               label={t().borderRadius}
               value={state().borderRadius}
               onChange={(v) => update({ borderRadius: v })}

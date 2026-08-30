@@ -16,14 +16,3 @@
 .grain-title {
   animation: grain-shift 60s linear infinite;
 }
-
-@layer components {
-  /* プレビュー iframe はスケール表示するのでスクロールバーを隠す */
-  .sunae-iframe {
-    scrollbar-width: none;
-  }
-
-  .sunae-iframe::-webkit-scrollbar {
-    display: none;
-  }
-}

@@ -1,8 +1,7 @@
 import { createSignal, createEffect, onCleanup, For } from 'solid-js'
 
-import { TITLE_TEMPLATES } from '../bookmarklet'
-
-const LABEL_CLS = 'text-sm text-zinc-600 mb-2 font-medium'
+import { TITLE_TEMPLATES } from '../presets'
+import { FieldLabel } from './FieldLabel'
 
 interface Props {
   label: string
@@ -25,7 +24,7 @@ export function TitleField(props: Props) {
 
   return (
     <div class="relative" ref={wrapRef}>
-      <div class={LABEL_CLS}>{props.label}</div>
+      <FieldLabel>{props.label}</FieldLabel>
       <div class="flex overflow-hidden rounded-md border border-zinc-200 bg-white">
         <input
           type="text"
@@ -44,7 +43,7 @@ export function TitleField(props: Props) {
         </button>
       </div>
       {open() && (
-        <div class="absolute top-full right-0 left-0 z-50 mt-1 grid grid-cols-2 gap-0.5 rounded-md border border-zinc-200 bg-white p-1 shadow-[0_8px_20px_rgba(0,0,0,0.08)]">
+        <div class="absolute inset-x-0 top-full z-50 mt-1 grid grid-cols-2 gap-0.5 rounded-md border border-zinc-200 bg-white p-1 shadow-[0_8px_20px_rgba(0,0,0,0.08)]">
           <For each={TITLE_TEMPLATES}>
             {(t) => (
               <button

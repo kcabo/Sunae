@@ -1,4 +1,4 @@
-const LABEL_CLS = 'text-sm text-zinc-600 mb-2 font-medium'
+import { FieldLabel } from './FieldLabel'
 
 /**
  * 入力値はそのまま生成 CSS に埋め込まれるため、hex 以外は state に流さない。
@@ -15,7 +15,7 @@ interface Props {
 export function ColorField(props: Props) {
   return (
     <div>
-      <div class={LABEL_CLS}>{props.label}</div>
+      <FieldLabel>{props.label}</FieldLabel>
       <div class="flex items-stretch gap-2 rounded-md border border-zinc-200 bg-white p-1">
         <label
           class="relative h-7 w-8 shrink-0 cursor-pointer rounded border border-black/8"

@@ -1,15 +1,10 @@
 import { For } from 'solid-js'
 
-const LABEL_CLS = 'text-sm text-zinc-600 mb-2 font-medium'
-
-interface Option {
-  value: number
-  label: string
-}
+import { FieldLabel } from './FieldLabel'
 
 interface Props {
   label: string
-  options: (number | Option)[]
+  options: number[]
   value: number
   onChange: (v: number) => void
 }
@@ -17,28 +12,19 @@ interface Props {
 export function ChipGroup(props: Props) {
   return (
     <div>
-      <div class={LABEL_CLS}>{props.label}</div>
+      <FieldLabel>{props.label}</FieldLabel>
       <div class="grid grid-cols-6 gap-1">
         <For each={props.options}>
-          {(o) => {
-            const v = typeof o === 'object' ? o.value : o
-            const lbl = typeof o === 'object' ? o.label : String(o)
-            const active = () => v === props.value
-            return (
-              <button
-                type="button"
-                onClick={() => props.onChange(v)}
-                class="cursor-pointer rounded-md border px-1 py-2.5 text-sm font-medium transition-all"
-                style={{
-                  border: active() ? '1px solid #111' : '1px solid #e4e4e7',
-                  background: active() ? '#111' : '#fff',
-                  color: active() ? '#fff' : '#27272a',
-                }}
-              >
-                {lbl}
-              </button>
-            )
-          }}
+          {(o) => (
+            <button
+              type="button"
+              data-active={o === props.value || undefined}
+              onClick={() => props.onChange(o)}
+              class="cursor-pointer rounded-md border border-zinc-200 bg-white px-1 py-2.5 text-sm font-medium text-zinc-800 transition-colors data-[active]:border-zinc-900 data-[active]:bg-zinc-900 data-[active]:text-white"
+            >
+              {o}
+            </button>
+          )}
         </For>
       </div>
     </div>

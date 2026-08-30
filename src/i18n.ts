@@ -1,0 +1,46 @@
+export const I18N = {
+  ja: {
+    title: 'Sunae',
+    subtitle:
+      'あなただけのメモ帳を作れます。\n作ったメモ帳はブラウザのブックマークに登録でき、クリック一つで即座に開けます。\n余計な機能は一切ありません。気軽にメモして、閉じたら消える。ただそれだけの、世界で一番シンプルなメモ帳です。',
+    presets: 'カラープリセット',
+    bg1: '背景色（メモ帳）',
+    bg2: '背景色（外側）',
+    text: '文字色',
+    lineHeight: '行間',
+    padding: '内側余白',
+    margin: '外側余白',
+    maxWidth: '最大幅',
+    borderRadius: '角丸',
+    title_field: 'タイトル',
+    install: 'ブラウザへの登録方法',
+    installHint: '右のボタンをブックマークバーへドラッグ&ドロップ',
+    copyUrl: 'URLをコピー',
+    copied: 'コピーしました!',
+    reset: 'リセット',
+    sampleText: '今日のタスク\n・プロジェクトの資料を作成\n・ミーティングの準備\n・メールの返信',
+  },
+  en: {
+    title: 'Sunae',
+    subtitle:
+      "Create your own notepad.\nRegister it as a browser bookmark and open it instantly with one click.\nNo extra features. Just write, close, and it's gone. The simplest notepad in the world.",
+    presets: 'Color presets',
+    bg1: 'Background (page)',
+    bg2: 'Background (outer)',
+    text: 'Text color',
+    lineHeight: 'Line height',
+    padding: 'Inner padding',
+    margin: 'Outer margin',
+    maxWidth: 'Max width',
+    borderRadius: 'Corner radius',
+    title_field: 'Title',
+    install: 'How to add to your browser',
+    installHint: 'Drag the button on the right to your bookmark bar',
+    copyUrl: 'Copy URL',
+    copied: 'Copied!',
+    reset: 'Reset',
+    sampleText: "Today's tasks\n· Draft project doc\n· Prep for meeting\n· Reply to emails",
+  },
+} as const
+
+export type Lang = keyof typeof I18N

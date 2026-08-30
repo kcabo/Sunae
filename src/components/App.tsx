@@ -1,16 +1,12 @@
 import { createSignal, createMemo } from 'solid-js'
 
-import {
-  DEFAULT_STATE,
-  PRESETS,
-  I18N,
-  buildBookmarkletURL,
-  type BookmarkletState,
-  type Lang,
-} from '../bookmarklet'
+import { DEFAULT_STATE, buildBookmarkletURL, type BookmarkletState } from '../bookmarklet'
+import { I18N, type Lang } from '../i18n'
+import { PRESETS } from '../presets'
 import { ChipGroup } from './ChipGroup'
 import { ColorField } from './ColorField'
 import { CopyButton } from './CopyButton'
+import { FieldLabel } from './FieldLabel'
 import { LangToggle } from './LangToggle'
 import { LivePreview } from './LivePreview'
 import { PresetGrid } from './PresetGrid'
@@ -103,7 +99,7 @@ export default function App() {
           />
 
           <div>
-            <div class="mb-2.5 text-sm font-medium text-zinc-600">{t().presets}</div>
+            <FieldLabel>{t().presets}</FieldLabel>
             <PresetGrid value={state().preset} onChange={applyPreset} />
           </div>
 
@@ -235,7 +231,7 @@ function PreviewFrame(props: { url: string; label: string; textColor: string; ch
       </div>
       {/* URL bar */}
       <div class="flex h-9 items-center gap-2 border-b border-zinc-200 bg-white px-2.5">
-        <div class="h-3.5 w-3.5 rounded-sm bg-zinc-300" />
+        <div class="size-3.5 rounded-sm bg-zinc-300" />
         <div class="flex h-6 flex-1 items-center overflow-hidden rounded-xl bg-zinc-100 px-2.5 font-mono text-xs whitespace-nowrap text-zinc-500">
           <span class="overflow-hidden text-ellipsis whitespace-nowrap">
             {props.url.slice(0, 60)}

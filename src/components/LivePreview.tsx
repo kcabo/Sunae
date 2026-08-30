@@ -1,8 +1,9 @@
 import { createEffect, createSignal, on, onCleanup } from 'solid-js'
+
 import { type BookmarkletState, buildBookmarkletCSS, buildBookmarkletHTML } from '../bookmarklet'
 
-/** プレビュー枠内では body を枠いっぱいに見せたいので min-height だけ上書きする */
-const PREVIEW_CSS_PATCH = 'body{min-height:100vh!important;}'
+/** プレビュー枠は縮小表示なので、枠いっぱいに見せつつ内側のスクロールを止める */
+const PREVIEW_CSS_PATCH = 'html{overflow:hidden;}body{min-height:100vh!important;}'
 
 interface Props {
   state: BookmarkletState
@@ -18,7 +19,7 @@ export function LivePreview(props: Props) {
 
   createEffect(() => {
     if (!wrapRef) return
-    const ro = new ResizeObserver(entries => {
+    const ro = new ResizeObserver((entries) => {
       for (const e of entries) {
         const w = e.contentRect.width
         setScale(w > 0 ? w / virtualWidth() : 1)
@@ -33,7 +34,7 @@ export function LivePreview(props: Props) {
   createEffect(
     on(
       () => props.sampleText,
-      text => {
+      (text) => {
         const iframe = iframeRef
         if (!iframe) return
         iframe.srcdoc = buildBookmarkletHTML(props.state).replace(
@@ -45,7 +46,7 @@ export function LivePreview(props: Props) {
           if (!doc?.body) return
           doc.body.innerHTML = (text ?? '')
             .split('\n')
-            .map(l => (l.length === 0 ? '<br>' : `<div>${l.replace(/</g, '&lt;')}</div>`))
+            .map((l) => (l.length === 0 ? '<br>' : `<div>${l.replace(/</g, '&lt;')}</div>`))
             .join('')
         }
         iframe.addEventListener('load', onLoad)
@@ -73,7 +74,7 @@ export function LivePreview(props: Props) {
     <div ref={wrapRef} class="relative size-full overflow-hidden bg-white">
       <iframe
         ref={iframeRef}
-        class="sunae-iframe block border-none"
+        class="block border-none"
         title="bookmarklet-preview"
         sandbox="allow-same-origin"
         style={{

@@ -33,7 +33,7 @@ export function ControlPanel(props: Props) {
 
       <div>
         <FieldLabel>{props.t.presets}</FieldLabel>
-        <PresetGrid t={props.t} value={props.state.preset} onChange={applyPreset} />
+        <PresetGrid value={props.state.preset} onChange={applyPreset} />
       </div>
 
       <ColorFields t={props.t} state={props.state} onChange={props.onChange} />

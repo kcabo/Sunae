@@ -1,11 +1,14 @@
 import type { BookmarkletState } from '../bookmarklet'
 import type { Messages } from '../i18n'
 import { PRESETS } from '../presets'
+import { ChipGroup } from './ChipGroup'
 import { ColorFields } from './ColorFields'
 import { FieldLabel } from './FieldLabel'
-import { LayoutFields } from './LayoutFields'
 import { PresetGrid } from './PresetGrid'
+import { SliderFields } from './SliderFields'
 import { TitleField } from './TitleField'
+
+const LINE_HEIGHTS = [1, 1.25, 1.375, 1.5, 1.625, 2]
 
 interface Props {
   t: Messages
@@ -36,8 +39,18 @@ export function ControlPanel(props: Props) {
         <PresetGrid value={props.state.preset} onChange={applyPreset} />
       </div>
 
-      <ColorFields t={props.t} state={props.state} onChange={props.onChange} />
-      <LayoutFields t={props.t} state={props.state} onChange={props.onChange} />
+      {/* ラベルを左に置く項目はまとめて同じ間隔で並べる */}
+      <div class="grid gap-4">
+        <ColorFields t={props.t} state={props.state} onChange={props.onChange} />
+        <ChipGroup
+          label={props.t.lineHeight}
+          options={LINE_HEIGHTS}
+          value={props.state.lineHeight}
+          onChange={(v) => props.onChange({ lineHeight: v })}
+        />
+      </div>
+
+      <SliderFields t={props.t} state={props.state} onChange={props.onChange} />
 
       <button
         type="button"

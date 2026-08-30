@@ -1,4 +1,4 @@
-import type { BookmarkletState } from '../bookmarklet'
+import { type BookmarkletState, LINE_HEIGHTS } from '../bookmarklet'
 import type { Messages } from '../i18n'
 import { PRESETS } from '../presets'
 import { ChipGroup } from './ChipGroup'
@@ -7,8 +7,6 @@ import { FieldLabel } from './FieldLabel'
 import { PresetGrid } from './PresetGrid'
 import { SliderFields } from './SliderFields'
 import { TitleField } from './TitleField'
-
-const LINE_HEIGHTS = [1, 1.25, 1.375, 1.5, 1.625, 2]
 
 interface Props {
   t: Messages

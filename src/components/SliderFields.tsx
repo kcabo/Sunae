@@ -1,4 +1,4 @@
-import type { BookmarkletState } from '../bookmarklet'
+import { type BookmarkletState, RANGES } from '../bookmarklet'
 import type { Messages } from '../i18n'
 import { SliderField } from './SliderField'
 
@@ -15,33 +15,25 @@ export function SliderFields(props: Props) {
         label={props.t.padding}
         value={props.state.padding}
         onChange={(v) => props.onChange({ padding: v })}
-        min={0}
-        max={64}
-        step={16}
+        {...RANGES.padding}
       />
       <SliderField
         label={props.t.margin}
         value={props.state.margin}
         onChange={(v) => props.onChange({ margin: v })}
-        min={0}
-        max={96}
-        step={24}
+        {...RANGES.margin}
       />
       <SliderField
         label={props.t.maxWidth}
         value={props.state.maxWidth}
         onChange={(v) => props.onChange({ maxWidth: v })}
-        min={800}
-        max={1600}
-        step={200}
+        {...RANGES.maxWidth}
       />
       <SliderField
         label={props.t.borderRadius}
         value={props.state.borderRadius}
         onChange={(v) => props.onChange({ borderRadius: v })}
-        min={0}
-        max={32}
-        step={8}
+        {...RANGES.borderRadius}
       />
     </div>
   )

@@ -31,6 +31,17 @@ export const DEFAULT_STATE: BookmarkletState = {
   title: '📌 Memo',
 }
 
+/** 行間の選択肢 */
+export const LINE_HEIGHTS = [1, 1.25, 1.375, 1.5, 1.625, 2]
+
+/** スライダーで選べる範囲。既定値はいずれも目盛りの上に乗る */
+export const RANGES = {
+  padding: { min: 0, max: 64, step: 16 },
+  margin: { min: 0, max: 96, step: 24 },
+  maxWidth: { min: 800, max: 1600, step: 200 },
+  borderRadius: { min: 0, max: 32, step: 8 },
+}
+
 /** メモ帳本体のスタイル。プレビューでも同じ関数を使って見た目を一致させる */
 export function buildBookmarkletCSS(opts: Partial<BookmarkletState>): string {
   const { bg1, bg2, text, lineHeight, maxWidth, padding, margin, borderRadius } = {

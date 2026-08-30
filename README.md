@@ -56,11 +56,15 @@ data:text/html,<head><title>📌 Memo</title><style>…</style></head><body cont
 src/
 ├── bookmarklet.ts          # 設定の型・既定値・data: URL の生成
 ├── presets.ts              # カラープリセットとタイトルのテンプレート
-├── i18n.ts                 # 日本語 / 英語の文言
+├── i18n.ts                 # 日本語 / 英語の文言と Messages 型
 ├── components/             # SolidJS のコンポーネント
 ├── pages/index.astro       # ページ本体
-└── pages/open-graph/       # OGP 画像の生成エンドポイント
+└── pages/open-graph/       # OGP 画像の生成エンドポイント (satori)
 ```
+
+lint は oxlint の correctness / suspicious / perf / pedantic / style を有効にし、
+Tailwind のクラスの並びは oxfmt の `sortTailwindcss` が、クラス名の検証は
+oxlint-tailwindcss が担当します (役割が重ならないよう設定してあります)。
 
 | コマンド        | 説明                              |
 | :-------------- | :-------------------------------- |

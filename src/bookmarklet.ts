@@ -43,9 +43,11 @@ export function buildBookmarkletCSS(opts: Partial<BookmarkletState>): string {
     `body{background:${bg1};color:${text};line-height:${lineHeight};`,
     `padding:${padding}px;font-family:${FONT_FAMILY};`,
     `margin:${margin}px auto;max-width:${maxWidth}px;`,
-    'min-height:400px;',
+    'min-height:400px;overflow-wrap:break-word;',
     borderRadius > 0 ? `border-radius:${borderRadius}px;` : '',
     'box-shadow:0 2px 8px rgba(0,0,0,0.1);}',
+    // 貼り付けた画像・動画・表・コードが枠からはみ出さないようにする
+    'img,video{max-width:100%;height:auto;}pre,table{display:block;max-width:100%;overflow-x:auto;}',
   ].join('')
 }
 

@@ -1,28 +1,67 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "import", "jsx-a11y", "promise"],
   "jsPlugins": ["oxlint-tailwindcss"],
-  "settings": {
-    "tailwindcss": {
-      "entryPoint": "src/styles/global.css"
-    }
-  },
+  "settings": { "tailwindcss": { "entryPoint": "src/styles/global.css" } },
   "categories": {
     "correctness": "error",
-    "suspicious": "warn",
-    "perf": "warn"
+    "suspicious": "error",
+    "perf": "error",
+    "pedantic": "error",
+    "style": "error"
   },
   "rules": {
-    // Solid の ref パターン (let el; <div ref={el}>) を代入なしと誤検知するため
+    // 関数式は使わず、宣言かアロー関数に寄せる
+    "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+
+    // Solid の ref (let el; <div ref={el}>) と後から代入するタイマーで必要
     "no-unassigned-vars": "off",
+    "init-declarations": "off",
+
+    // CSS プロパティは意味のまとまり順に書きたい
+    "sort-keys": "off",
+    // import の並びは oxfmt の sortImports が持つ
+    "sort-imports": "off",
+    // 宣言をまとめると読みにくい
+    "one-var": "off",
+    // Solid のハンドラ引数 e / v / p は 1 文字が自然
+    "id-length": "off",
+    // 寸法や選択肢まで定数にするのは過剰
+    "no-magic-numbers": "off",
+    // JSX の条件分岐に必要
+    "no-ternary": "off",
+    // コメントは日本語主体で、大文字小文字の規則が意味を持たない
+    "capitalized-comments": "off",
+    // コンポーネントのファイル名は PascalCase
+    "unicorn/filename-case": "off",
+
+    // named export で統一する方針
+    "import/no-named-export": "off",
+    "import/prefer-default-export": "off",
+    "import/group-exports": "off",
+    "import/exports-last": "off",
+    "import/max-dependencies": "off",
+    // global.css の副作用インポート
+    "import/no-unassigned-import": "off",
+    // OGP 画像はビルド時に生成するため Node の API を使う
+    "import/no-nodejs-modules": "off",
+
+    // クラスの並びと余分な空白は oxfmt の sortTailwindcss が担当するため無効化する。
+    // ここに残すのは oxfmt にはできない検証と書き換え提案だけ。
+    "tailwindcss/enforce-sort-order": "off",
+    "tailwindcss/consistent-variant-order": "off",
+    "tailwindcss/enforce-consistent-important-position": "off",
+    "tailwindcss/no-unnecessary-whitespace": "off",
+
     "tailwindcss/no-unknown-classes": "error",
     "tailwindcss/no-duplicate-classes": "error",
     "tailwindcss/no-conflicting-classes": "error",
     "tailwindcss/no-deprecated-classes": "error",
-    "tailwindcss/no-unnecessary-whitespace": "error",
-    "tailwindcss/enforce-canonical": "warn",
-    "tailwindcss/enforce-sort-order": "warn",
-    "tailwindcss/enforce-shorthand": "warn",
-    "tailwindcss/no-unnecessary-arbitrary-value": "warn"
+    "tailwindcss/no-contradicting-variants": "error",
+    "tailwindcss/enforce-canonical": "error",
+    "tailwindcss/enforce-shorthand": "error",
+    "tailwindcss/enforce-consistent-variable-syntax": "error",
+    "tailwindcss/no-unnecessary-arbitrary-value": "error"
   },
   "ignorePatterns": ["dist", ".astro"]
 }

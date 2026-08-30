@@ -8,7 +8,8 @@ const description =
   'あなただけのメモ帳を作れます。ブラウザのブックマークに登録してクリック一つで即座に起動。気軽にメモして、閉じたら消える。'
 
 // BASE_URL は末尾スラッシュの有無が設定に依存するため揃えておく
-const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
+const rawBase = import.meta.env.BASE_URL
+const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`
 const canonical = new URL(Astro.url.pathname, Astro.site)
 const ogImage = new URL(`${base}open-graph/index.png`, Astro.site)
 ---

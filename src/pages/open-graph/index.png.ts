@@ -24,7 +24,10 @@ const FONTS = {
     'https://cdn.jsdelivr.net/fontsource/fonts/noto-sans-jp@latest/japanese-400-normal.ttf',
 }
 
-const load = async (url: string) => await (await fetch(url)).arrayBuffer()
+async function load(url: string): Promise<ArrayBuffer> {
+  const response = await fetch(url)
+  return await response.arrayBuffer()
+}
 const [montserrat, notoSansJP] = await Promise.all([load(FONTS.montserrat), load(FONTS.notoSansJP)])
 const logo = `data:image/png;base64,${readFileSync('src/assets/og-logo.png').toString('base64')}`
 

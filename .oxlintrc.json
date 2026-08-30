@@ -35,6 +35,9 @@
     // コンポーネントのファイル名は PascalCase
     "unicorn/filename-case": "off",
 
+    // no-duplicate-imports と衝突する。同じモジュールの型と値は 1 文にまとめる
+    "import/consistent-type-specifier-style": "off",
+
     // named export で統一する方針
     "import/no-named-export": "off",
     "import/prefer-default-export": "off",

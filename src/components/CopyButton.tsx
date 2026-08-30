@@ -1,5 +1,30 @@
 import { createSignal, onCleanup } from 'solid-js'
 
+/** コピー完了の表示を戻すまでの時間 */
+const CONFIRM_DURATION = 1400
+
+/** clipboard API が使えない環境 (非 HTTPS など) 向けのフォールバック */
+function copyByExecCommand(text: string): void {
+  const textarea = document.createElement('textarea')
+  textarea.value = text
+  document.body.append(textarea)
+  textarea.select()
+  try {
+    document.execCommand('copy')
+  } catch {
+    // コピーできない環境では黙って諦める
+  }
+  textarea.remove()
+}
+
+async function copyToClipboard(text: string): Promise<void> {
+  try {
+    await navigator.clipboard.writeText(text)
+  } catch {
+    copyByExecCommand(text)
+  }
+}
+
 interface Props {
   text: string
   label?: string
@@ -12,22 +37,10 @@ export function CopyButton(props: Props) {
   onCleanup(() => clearTimeout(timer))
 
   const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(props.text)
-    } catch {
-      // clipboard API が使えない環境 (非 HTTPS など) 向けのフォールバック
-      const ta = document.createElement('textarea')
-      ta.value = props.text
-      document.body.appendChild(ta)
-      ta.select()
-      try {
-        document.execCommand('copy')
-      } catch {}
-      ta.remove()
-    }
+    await copyToClipboard(props.text)
     setDone(true)
     clearTimeout(timer)
-    timer = setTimeout(() => setDone(false), 1400)
+    timer = setTimeout(() => setDone(false), CONFIRM_DURATION)
   }
 
   return (

@@ -54,7 +54,10 @@ export function buildBookmarkletCSS(opts: Partial<BookmarkletState>): string {
 export function buildBookmarkletHTML(opts: Partial<BookmarkletState>): string {
   const { title, text } = { ...DEFAULT_STATE, ...opts }
 
-  const safeTitle = String(title).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  const safeTitle = String(title)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
 
   const faviconSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='6' fill='${text}'/></svg>`
 
@@ -68,5 +71,5 @@ export function buildBookmarkletHTML(opts: Partial<BookmarkletState>): string {
 }
 
 export function buildBookmarkletURL(opts: Partial<BookmarkletState>): string {
-  return 'data:text/html,' + encodeURIComponent(buildBookmarkletHTML(opts))
+  return `data:text/html,${encodeURIComponent(buildBookmarkletHTML(opts))}`
 }

@@ -2,8 +2,11 @@ import { createEffect, createMemo, createSignal, on, onCleanup } from 'solid-js'
 
 import { type BookmarkletState, buildBookmarkletCSS, buildBookmarkletHTML } from '../bookmarklet'
 
-/** プレビュー枠は縮小表示なので、枠いっぱいに見せつつ内側のスクロールを止める */
-const PREVIEW_CSS_PATCH = 'html{overflow:hidden;}body{min-height:100vh!important;}'
+/**
+ * プレビュー枠は縮小表示なので、枠いっぱいに見せつつ内側のスクロールを止める。
+ * 縮小で文字が潰れないよう、本文だけ既定より大きくして描く。
+ */
+const PREVIEW_CSS_PATCH = 'html{overflow:hidden;}body{min-height:100vh!important;font-size:22px;}'
 /** メモ帳の左右に外側背景を見せるぶんの幅 */
 const OUTER_MARGIN = 200
 

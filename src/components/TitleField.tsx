@@ -30,7 +30,7 @@ export function TitleField(props: Props) {
           type="text"
           value={props.value}
           onInput={(e) => props.onChange((e.target as HTMLInputElement).value)}
-          class="min-w-0 flex-1 border-none bg-transparent px-3 py-2.5 text-sm text-zinc-800 outline-none"
+          class="min-w-0 flex-1 border-none bg-transparent p-3 text-sm text-zinc-800 outline-none"
         />
         <button
           type="button"

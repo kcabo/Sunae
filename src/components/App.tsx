@@ -72,7 +72,7 @@ export default function App() {
           </PreviewFrame>
 
           {/* Install row */}
-          <div class="flex items-center gap-3.5 rounded-xl border border-zinc-200 bg-white p-5">
+          <div class="flex items-center gap-4 rounded-xl border border-zinc-200 bg-white p-6">
             <div class="min-w-0 flex-1">
               <div class="mb-0.5 text-sm font-semibold text-zinc-800">{t().install}</div>
               <div class="text-sm leading-snug text-zinc-500">{t().installHint}</div>
@@ -91,7 +91,7 @@ export default function App() {
         </div>
 
         {/* RIGHT: Controls */}
-        <div class="flex flex-col gap-6 self-start rounded-xl border border-zinc-200 bg-white p-6">
+        <div class="flex flex-col gap-8 self-start rounded-xl border border-zinc-200 bg-white p-7">
           <TitleField
             label={t().title_field}
             value={state().title}
@@ -103,7 +103,7 @@ export default function App() {
             <PresetGrid value={state().preset} onChange={applyPreset} />
           </div>
 
-          <div class="grid gap-2.5">
+          <div class="grid gap-4">
             <ColorField
               label={t().bg1}
               value={state().bg1}
@@ -121,7 +121,7 @@ export default function App() {
             />
           </div>
 
-          <div class="grid gap-3.5">
+          <div class="grid gap-5">
             <ChipGroup
               label={t().lineHeight}
               options={[1, 1.25, 1.375, 1.5, 1.625, 2]}

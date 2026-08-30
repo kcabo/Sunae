@@ -16,9 +16,9 @@ export function ColorField(props: Props) {
   return (
     <div>
       <FieldLabel>{props.label}</FieldLabel>
-      <div class="flex items-stretch gap-2 rounded-md border border-zinc-200 bg-white p-1">
+      <div class="flex items-stretch gap-2 rounded-md border border-zinc-200 bg-white p-1.5">
         <label
-          class="relative h-7 w-8 shrink-0 cursor-pointer rounded border border-black/8"
+          class="relative h-8 w-9 shrink-0 cursor-pointer rounded border border-black/8"
           style={{ background: props.value }}
         >
           <input

@@ -1,3 +1,5 @@
+import { InlineFieldLabel } from './FieldLabel'
+
 /**
  * 入力値はそのまま生成 CSS に埋め込まれるため、hex 以外は state に流さない。
  * `#` や `#ff` のような入力途中の値は無視され、入力欄の表示だけが残る。
@@ -13,7 +15,7 @@ interface Props {
 export function ColorField(props: Props) {
   return (
     <div class="flex items-center gap-3">
-      <span class="w-30 shrink-0 text-sm font-medium text-zinc-600">{props.label}</span>
+      <InlineFieldLabel>{props.label}</InlineFieldLabel>
       <div class="flex flex-1 items-stretch gap-2 rounded-md border border-zinc-200 bg-white p-1.5">
         <label
           aria-label={props.label}

@@ -1,8 +1,6 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "jsPlugins": [
-    "oxlint-tailwindcss"
-  ],
+  "jsPlugins": ["oxlint-tailwindcss"],
   "settings": {
     "tailwindcss": {
       "entryPoint": "src/styles/global.css"
@@ -26,8 +24,5 @@
     "tailwindcss/enforce-shorthand": "warn",
     "tailwindcss/no-unnecessary-arbitrary-value": "warn"
   },
-  "ignorePatterns": [
-    "dist",
-    ".astro"
-  ]
+  "ignorePatterns": ["dist", ".astro"]
 }

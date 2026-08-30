@@ -1,4 +1,5 @@
 import { createSignal, createEffect, onCleanup, For } from 'solid-js'
+
 import { TITLE_TEMPLATES } from '../bookmarklet'
 
 const LABEL_CLS = 'text-sm text-zinc-600 mb-2 font-medium'
@@ -25,31 +26,34 @@ export function TitleField(props: Props) {
   return (
     <div class="relative" ref={wrapRef}>
       <div class={LABEL_CLS}>{props.label}</div>
-      <div class="flex border border-zinc-200 rounded-md bg-white overflow-hidden">
+      <div class="flex overflow-hidden rounded-md border border-zinc-200 bg-white">
         <input
           type="text"
           value={props.value}
-          onInput={e => props.onChange((e.target as HTMLInputElement).value)}
-          class="flex-1 border-none px-3 py-2.5 text-sm text-zinc-800 outline-none bg-transparent min-w-0"
+          onInput={(e) => props.onChange((e.target as HTMLInputElement).value)}
+          class="min-w-0 flex-1 border-none bg-transparent px-3 py-2.5 text-sm text-zinc-800 outline-none"
         />
         <button
           type="button"
-          onClick={() => setOpen(o => !o)}
+          onClick={() => setOpen((o) => !o)}
           aria-label="templates"
-          class="border-none border-l border-zinc-200 bg-white text-zinc-600 cursor-pointer px-3.5 text-xs"
-          style={{ "border-left": '1px solid #e4e4e7' }}
+          class="cursor-pointer border-l border-none border-zinc-200 bg-white px-3.5 text-xs text-zinc-600"
+          style={{ 'border-left': '1px solid #e4e4e7' }}
         >
           ▼
         </button>
       </div>
       {open() && (
-        <div class="absolute top-full left-0 right-0 mt-1 bg-white border border-zinc-200 rounded-md shadow-[0_8px_20px_rgba(0,0,0,0.08)] p-1 z-50 grid grid-cols-2 gap-0.5">
+        <div class="absolute top-full right-0 left-0 z-50 mt-1 grid grid-cols-2 gap-0.5 rounded-md border border-zinc-200 bg-white p-1 shadow-[0_8px_20px_rgba(0,0,0,0.08)]">
           <For each={TITLE_TEMPLATES}>
-            {t => (
+            {(t) => (
               <button
                 type="button"
-                onClick={() => { props.onChange(`${t.emoji} ${t.label}`); setOpen(false) }}
-                class="border-none bg-transparent px-2.5 py-2 text-sm text-left cursor-pointer rounded text-zinc-800 flex gap-1.5 items-center hover:bg-zinc-100 transition-colors"
+                onClick={() => {
+                  props.onChange(`${t.emoji} ${t.label}`)
+                  setOpen(false)
+                }}
+                class="flex cursor-pointer items-center gap-1.5 rounded border-none bg-transparent px-2.5 py-2 text-left text-sm text-zinc-800 transition-colors hover:bg-zinc-100"
               >
                 <span class="text-base">{t.emoji}</span>
                 <span>{t.label}</span>

@@ -1,4 +1,5 @@
 import { createSignal, createEffect, onCleanup } from 'solid-js'
+
 import { buildBookmarkletHTML, type BookmarkletState } from '../bookmarklet'
 
 interface Props {
@@ -15,7 +16,7 @@ export function LivePreview(props: Props) {
 
   createEffect(() => {
     if (!wrapRef) return
-    const ro = new ResizeObserver(entries => {
+    const ro = new ResizeObserver((entries) => {
       for (const e of entries) {
         const w = e.contentRect.width
         setScale(w > 0 ? w / virtualWidth() : 1)
@@ -30,7 +31,10 @@ export function LivePreview(props: Props) {
     const text = props.sampleText
     const iframe = iframeRef
     if (!iframe) return
-    const html = buildBookmarkletHTML(props.state).replace('</style>', 'body{min-height:100vh!important;}</style>')
+    const html = buildBookmarkletHTML(props.state).replace(
+      '</style>',
+      'body{min-height:100vh!important;}</style>',
+    )
     iframe.srcdoc = html
     const onLoad = () => {
       try {
@@ -38,7 +42,7 @@ export function LivePreview(props: Props) {
         if (!doc?.body) return
         const lines = (text || '').split('\n')
         doc.body.innerHTML = lines
-          .map(l => l.length === 0 ? '<br>' : `<div>${l.replace(/</g, '&lt;')}</div>`)
+          .map((l) => (l.length === 0 ? '<br>' : `<div>${l.replace(/</g, '&lt;')}</div>`))
           .join('')
       } catch {}
     }
@@ -69,14 +73,11 @@ export function LivePreview(props: Props) {
   })
 
   return (
-    <div
-      ref={wrapRef}
-      class="w-full h-full overflow-hidden relative bg-white"
-    >
+    <div ref={wrapRef} class="relative h-full w-full overflow-hidden bg-white">
       <style>{`.sunae-iframe::-webkit-scrollbar{display:none}`}</style>
       <iframe
         ref={iframeRef}
-        class="sunae-iframe border-none block"
+        class="sunae-iframe block border-none"
         title="bookmarklet-preview"
         sandbox="allow-same-origin"
         scrolling="no"

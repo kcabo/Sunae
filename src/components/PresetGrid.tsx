@@ -1,4 +1,5 @@
 import { For } from 'solid-js'
+
 import { PRESETS } from '../bookmarklet'
 
 interface Props {
@@ -10,35 +11,33 @@ export function PresetGrid(props: Props) {
   return (
     <div class="grid grid-cols-4 gap-2">
       <For each={PRESETS}>
-        {p => {
+        {(p) => {
           const active = () => p.id === props.value
           return (
             <button
               type="button"
               onClick={() => props.onChange(p.id)}
-              class="border rounded-lg bg-white p-0 overflow-hidden cursor-pointer text-left transition-[border-color,transform] outline-none"
+              class="cursor-pointer overflow-hidden rounded-lg border bg-white p-0 text-left transition-[border-color,transform] outline-none"
               style={{
                 border: active() ? '1.5px solid #111' : '1px solid #e4e4e7',
               }}
-              onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.98)')}
-              onMouseUp={e => (e.currentTarget.style.transform = '')}
-              onMouseLeave={e => (e.currentTarget.style.transform = '')}
+              onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.98)')}
+              onMouseUp={(e) => (e.currentTarget.style.transform = '')}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = '')}
             >
               <div
-                class="h-11 flex items-center justify-center relative border-b border-black/[0.04]"
+                class="relative flex h-11 items-center justify-center border-b border-black/4"
                 style={{ background: p.bg1 }}
               >
                 <div class="absolute inset-0" style={{ background: p.bg2 }} />
                 <div
-                  class="relative z-10 w-[70%] h-[70%] rounded flex items-center justify-center text-sm font-medium"
+                  class="relative z-10 flex h-[70%] w-[70%] items-center justify-center rounded text-sm font-medium"
                   style={{ background: p.bg1, color: p.text }}
                 >
                   Aa
                 </div>
               </div>
-              <div class="px-2 py-1.5 text-xs text-zinc-600 font-medium truncate">
-                {p.name}
-              </div>
+              <div class="truncate px-2 py-1.5 text-xs font-medium text-zinc-600">{p.name}</div>
             </button>
           )
         }}

@@ -1,4 +1,5 @@
 import { For } from 'solid-js'
+
 import type { Lang } from '../bookmarklet'
 
 interface Props {
@@ -8,13 +9,13 @@ interface Props {
 
 export function LangToggle(props: Props) {
   return (
-    <div class="inline-flex border border-zinc-200 rounded-md overflow-hidden">
+    <div class="inline-flex overflow-hidden rounded-md border border-zinc-200">
       <For each={['ja', 'en'] as Lang[]}>
-        {l => (
+        {(l) => (
           <button
             type="button"
             onClick={() => props.onChange(l)}
-            class="border-none px-3 py-1.5 text-xs font-medium cursor-pointer uppercase tracking-wider transition-colors"
+            class="cursor-pointer border-none px-3 py-1.5 text-xs font-medium tracking-wider uppercase transition-colors"
             style={{
               background: props.value === l ? '#e4e4e7' : 'transparent',
               color: props.value === l ? '#27272a' : '#a1a1aa',

@@ -17,7 +17,9 @@ export function CopyButton(props: Props) {
       ta.value = props.text
       document.body.appendChild(ta)
       ta.select()
-      try { document.execCommand('copy') } catch {}
+      try {
+        document.execCommand('copy')
+      } catch {}
       ta.remove()
     }
     setDone(true)
@@ -28,7 +30,7 @@ export function CopyButton(props: Props) {
     <button
       type="button"
       onClick={copy}
-      class="border rounded-md text-sm font-medium cursor-pointer px-3.5 py-2.5 transition-all"
+      class="cursor-pointer rounded-md border px-3.5 py-2.5 text-sm font-medium transition-all"
       style={{
         border: '1px solid #e4e4e7',
         background: done() ? '#111' : '#fff',

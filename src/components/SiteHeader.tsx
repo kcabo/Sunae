@@ -23,7 +23,7 @@ export function SiteHeader(props: { t: Messages }) {
       >
         {props.t.title}
       </h1>
-      <p class="mt-3 text-base leading-loose whitespace-pre-line text-zinc-600">
+      <p class="mt-7 text-base leading-loose whitespace-pre-line text-zinc-600">
         {props.t.subtitle}
       </p>
     </div>

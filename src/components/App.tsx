@@ -33,7 +33,7 @@ export default function App() {
 
       <SiteHeader t={t()} />
 
-      <div class="grid flex-1 grid-cols-1 gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,4fr)]">
+      <div class="grid flex-1 grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <div class="flex flex-col gap-5 self-start lg:sticky lg:top-8">
           <BrowserFrame url={url()} label={state().title} textColor={state().text}>
             <LivePreview state={state()} sampleText={t().sampleText} />

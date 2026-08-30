@@ -26,7 +26,7 @@ export const DEFAULT_STATE: BookmarkletState = {
   lineHeight: 1.625,
   padding: 32,
   margin: 48,
-  maxWidth: 800,
+  maxWidth: 1000,
   borderRadius: 12,
   title: '📌 Memo',
 }
